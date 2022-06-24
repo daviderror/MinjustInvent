@@ -1,0 +1,77 @@
+﻿<Window
+    x:Class="MinjustInvent.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MinjustInvent"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Инвентарь Минюста"
+    Width="800"
+    Height="450"
+    Icon="iconka.png"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Background>
+        <ImageBrush ImageSource="111-132.jpg" />
+    </Window.Background>
+    <Grid>
+        <StackPanel
+            Height="32"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <Button
+                Width="100"
+                Height="30"
+                Margin="10,0,15,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Background="Yellow"
+                Click="Button_Click_1"
+                Content="АРМ"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18" />
+            <Button
+                Width="120"
+                Height="30"
+                Margin="10,0,15,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Background="Yellow"
+                Click="Button_Click"
+                Content="Телефония"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18" />
+            <Button
+                Width="160"
+                Height="30"
+                Margin="10,0,15,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Background="Yellow"
+                Content="Флеш-накопители"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="16" />
+            <Button
+                Width="100"
+                Height="30"
+                Margin="10,0,15,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Background="Yellow"
+                Content="Принтеры"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18" />
+            <Button
+                Width="100"
+                Height="30"
+                Margin="16,0,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="Yellow"
+                Content="Пропуски"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18" />
+        </StackPanel>
+    </Grid>
+</Window>

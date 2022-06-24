@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище minjustdbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "minjustdb.dbo.ARM" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="ARM">
+          <Property Name="Кабинет" Type="char" MaxLength="10" />
+          <Property Name="Сегмент" Type="text" />
+          <Property Name="IP-адрес" Type="varchar" MaxLength="50" />
+          <Property Name="Операционная система" Type="text" />
+          <Property Name="ОЗУ" Type="char" MaxLength="10" />
+          <Property Name="Инвентарный номер" Type="nvarchar" MaxLength="50" />
+          <Property Name="ФИО" Type="text" />
+          <Property Name="Имя компьютера" Type="text" />
+        </EntityType>-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "minjustdb.dbo.Cards" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Cards">
+          <Property Name="ФИО" Type="text" />
+          <Property Name="Отдел" Type="text" />
+          <Property Name="Номер карты" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "minjustdb.dbo.Printers" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Printers">
+          <Key>
+            <PropertyRef Name="IP-адрес" />
+          </Key>
+          <Property Name="Кабинет" Type="char" MaxLength="10" />
+          <Property Name="Модель принтера" Type="text" />
+          <Property Name="Картридж" Type="text" />
+          <Property Name="Инвентарный номер" Type="nvarchar" MaxLength="50" />
+          <Property Name="IP-адрес" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "minjustdb.dbo.Telephony" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Telephony">
+          <Property Name="Должность" Type="text" />
+          <Property Name="ФИО" Type="text" />
+          <Property Name="Городской номер" Type="nvarchar" MaxLength="50" />
+          <Property Name="Внутренний номер" Type="nchar" MaxLength="10" />
+          <Property Name="Кабинет" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+        <EntityContainer Name="Хранилище minjustdbModelContainer">
+          <EntitySet Name="Printers" EntityType="Self.Printers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Printers].[Кабинет] AS [Кабинет], 
+    [Printers].[Модель принтера] AS [Модель принтера], 
+    [Printers].[Картридж] AS [Картридж], 
+    [Printers].[Инвентарный номер] AS [Инвентарный номер], 
+    [Printers].[IP-адрес] AS [IP-адрес]
+    FROM [dbo].[Printers] AS [Printers]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="minjustdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Printers">
+          <Key>
+            <PropertyRef Name="IP_адрес" />
+          </Key>
+          <Property Name="Кабинет" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Модель_принтера" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Картридж" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Инвентарный_номер" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP_адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="minjustdbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Printers" EntityType="Self.Printers" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище minjustdbModelContainer" CdmEntityContainer="minjustdbEntities1">
+          <EntitySetMapping Name="Printers">
+            <EntityTypeMapping TypeName="minjustdbModel.Printers">
+              <MappingFragment StoreEntitySet="Printers">
+                <ScalarProperty Name="Кабинет" ColumnName="Кабинет" />
+                <ScalarProperty Name="Модель_принтера" ColumnName="Модель принтера" />
+                <ScalarProperty Name="Картридж" ColumnName="Картридж" />
+                <ScalarProperty Name="Инвентарный_номер" ColumnName="Инвентарный номер" />
+                <ScalarProperty Name="IP_адрес" ColumnName="IP-адрес" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
