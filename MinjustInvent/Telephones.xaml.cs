@@ -15,27 +15,25 @@ using System.Windows.Shapes;
 namespace MinjustInvent
 {
     /// <summary>
-    /// Логика взаимодействия для Computers.xaml
+    /// Логика взаимодействия для Telephones.xaml
     /// </summary>
-    public partial class Computers : Window
+    public partial class Telephones : Window
     {
-        public Computers()
+        public Telephones()
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
         }
-        private void AddArm(object sender, RoutedEventArgs e)
+        private void DeleteTelephones(object sender, RoutedEventArgs e)
         {
 
         }
-
-        private void DeleteArm(object sender, RoutedEventArgs e)
+        private void AddTelephones(object sender, RoutedEventArgs e)
         {
 
         }

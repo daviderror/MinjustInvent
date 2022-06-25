@@ -45,13 +45,13 @@
             <Button
                 Width="160"
                 Height="30"
-                Margin="10,0,15,0"
+                Margin="10,0,15,2"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Top"
+                VerticalAlignment="Bottom"
                 Background="Yellow"
                 Content="Флеш-накопители"
                 FontFamily="MS Reference Sans Serif"
-                FontSize="16" />
+                FontSize="16" Click="Button_Click_2" />
             <Button
                 Width="100"
                 Height="30"

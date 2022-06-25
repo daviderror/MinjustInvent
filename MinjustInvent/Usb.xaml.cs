@@ -15,29 +15,30 @@ using System.Windows.Shapes;
 namespace MinjustInvent
 {
     /// <summary>
-    /// Логика взаимодействия для Computers.xaml
+    /// Логика взаимодействия для Usb.xaml
     /// </summary>
-    public partial class Computers : Window
+    public partial class Usb : Window
     {
-        public Computers()
+        public Usb()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddUsb(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteUsb(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
-        }
-        private void AddArm(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DeleteArm(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
