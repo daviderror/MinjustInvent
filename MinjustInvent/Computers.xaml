@@ -7,40 +7,59 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="1614548453_14-p-kompyuter-na-belom-fone-19.png"
-        Title="АРМ" Height="450" Width="800">
+        Title="АРМ" Height="450" Width="910">
     <Grid>
-        <Button
-                Width="150"
-                Height="40"
-                Margin="10,0,15,15"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Background="Yellow"
-                Click="AddArm"
-                Content="Добавить АРМ"
-                FontFamily="MS Reference Sans Serif"
-                FontSize="18" />
-        <Button
-                Width="150"
-                Height="40"
-                Margin="10,0,15,15"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Background="Yellow"
-                Click="DeleteArm"
-                Content="Удалить АРМ"
-                FontFamily="MS Reference Sans Serif"
-                FontSize="18" />
-        <Button
-                Width="120"
-                Height="30"
-                Margin="10,10,15,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Background="Yellow"
-                Click="Button_Click"
-                Content="Назад"
-                FontFamily="MS Reference Sans Serif"
-                FontSize="18" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" x:Name="phonesGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" Header="ФИО" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Segment}" Header="Сегмент" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Ip}" Header="IP-адрес" Width="125"/>
+                <DataGridTextColumn Binding="{Binding OperationSystem}" Header="Операционная система" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Memory}" Header="Оперативная память" Width="150"/>
+                <DataGridTextColumn Binding="{Binding InventNumber}" Header="Инвентарный номер" Width="125"/>
+                <DataGridTextColumn Binding="{Binding ComputerName}" Header="Имя компьютера" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel HorizontalAlignment="Left"  Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="backButton"
+            Width="120"
+            Height="30"
+            Margin="10,10,15,10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Background="Yellow"
+            Click="Back"
+            Content="Назад"
+            FontFamily="MS Reference Sans Serif"
+            FontSize="18" />
+            
+            <Button x:Name="updateButton"
+            Width="120"
+            Height="30"
+            Margin="180,10,15,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Yellow"
+            Click="updateButton_Click"
+            Content="Обновить"
+            FontFamily="MS Reference Sans Serif"
+            FontSize="18" />
+            
+            <Button x:Name="deleteButton"
+            Width="120"
+            Height="30"
+            Margin="180,10,15,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Yellow"
+            Click="deleteButton_Click"
+            Content="Удалить"
+            FontFamily="MS Reference Sans Serif"
+            FontSize="18" />
+        </StackPanel>
     </Grid>
 </Window>

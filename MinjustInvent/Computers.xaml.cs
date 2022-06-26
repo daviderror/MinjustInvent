@@ -24,20 +24,21 @@ namespace MinjustInvent
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void updateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
-        }
-        private void AddArm(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DeleteArm(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

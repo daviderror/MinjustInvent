@@ -9,38 +9,54 @@
         WindowStartupLocation="CenterScreen"
         Title="Флеш-накопители" Height="450" Width="800">
     <Grid>
-        <Button
-                Width="120"
-                Height="30"
-                Margin="10,10,15,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Background="Yellow"
-                Click="Back"
-                Content="Назад"
-                FontFamily="MS Reference Sans Serif"
-                FontSize="18" />
-        <Button
-                Width="180"
-                Height="40"
-                Margin="10,0,15,15"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Background="Yellow"
-                Click="AddUsb"
-                Content="Добавить USB"
-                FontFamily="MS Reference Sans Serif"
-                FontSize="18" />
-        <Button
-                Width="170"
-                Height="40"
-                Margin="10,0,15,15"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Background="Yellow"
-                Click="DeleteUsb"
-                Content="Удалить USB"
-                FontFamily="MS Reference Sans Serif"
-                FontSize="18" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" x:Name="phonesGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Office}" Header="Номер кабинета" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="ФИО сотрудника" Width="300"/>
+                <DataGridTextColumn Binding="{Binding SerialNumber}" Header="Серийный номер" Width="180"/>
+                <DataGridTextColumn Binding="{Binding SizeUsb}" Header="Объем USB накопителя" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel HorizontalAlignment="Left"  Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="backButton"
+            Width="120"
+            Height="30"
+            Margin="10,10,15,10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Background="Yellow"
+            Click="Back"
+            Content="Назад"
+            FontFamily="MS Reference Sans Serif"
+            FontSize="18" />
+
+            <Button x:Name="updateButton"
+            Width="120"
+            Height="30"
+            Margin="180,10,15,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Yellow"
+            Click="updateButton_Click"
+            Content="Обновить"
+            FontFamily="MS Reference Sans Serif"
+            FontSize="18" />
+
+            <Button x:Name="deleteButton"
+            Width="120"
+            Height="30"
+            Margin="180,10,15,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Yellow"
+            Click="deleteButton_Click"
+            Content="Удалить"
+            FontFamily="MS Reference Sans Serif"
+            FontSize="18" />
+        </StackPanel>
     </Grid>
 </Window>

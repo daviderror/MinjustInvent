@@ -31,12 +31,12 @@ namespace MinjustInvent
             this.Close();
         }
 
-        private void AddPrinter(object sender, RoutedEventArgs e)
+        private void updateButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void DeletePrinter(object sender, RoutedEventArgs e)
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

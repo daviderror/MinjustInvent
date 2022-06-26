@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:MinjustInvent"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Инвентарь Минюста"
-    Width="800"
+    Width="750"
     Height="450"
     Icon="iconka.png"
     ResizeMode="NoResize"
@@ -44,7 +44,7 @@
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" />
             <Button
-                Width="160"
+                Width="180"
                 Height="30"
                 Margin="10,0,15,2"
                 HorizontalAlignment="Stretch"
@@ -52,7 +52,7 @@
                 Background="Yellow"
                 Content="Флеш-накопители"
                 FontFamily="MS Reference Sans Serif"
-                FontSize="16" Click="Button_Click_2" />
+                FontSize="18" Click="Button_Click_2" />
             <Button
                 Width="100"
                 Height="30"
@@ -74,5 +74,6 @@
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" Click="Button_Click_4" />
         </StackPanel>
+        
     </Grid>
 </Window>

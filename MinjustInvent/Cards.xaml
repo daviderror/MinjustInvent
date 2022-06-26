@@ -9,38 +9,77 @@
         WindowStartupLocation="CenterScreen"
         Title="Пропуски" Height="450" Width="800">
     <Grid>
-        <Button
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="phonesGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding }"
+                    Header="Должность" />
+                <DataGridTextColumn
+                    Width="120"
+                    Binding="{Binding Name}"
+                    Header="ФИО" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding NameDepartament}"
+                    Header="Отдел" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding Office}"
+                    Header="Кабинет" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding InternalPhone}"
+                    Header="Номер карты" />
+               
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            Orientation="Horizontal">
+            <Button
+                x:Name="backButton"
                 Width="120"
                 Height="30"
-                Margin="10,10,15,0"
+                Margin="10,10,15,10"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
+                VerticalAlignment="Stretch"
                 Background="Yellow"
                 Click="Back"
                 Content="Назад"
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" />
-        <Button
-                Width="190"
-                Height="40"
-                Margin="10,0,15,15"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Background="Yellow"
-                Click="AddCard"
-                Content="Добавить карточку"
-                FontFamily="MS Reference Sans Serif"
-                FontSize="18" />
-        <Button
-                Width="170"
-                Height="40"
-                Margin="10,0,15,15"
+
+            <Button
+                x:Name="updateButton"
+                Width="120"
+                Height="30"
+                Margin="180,10,15,10"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
+                VerticalAlignment="Center"
                 Background="Yellow"
-                Click="DeleteCard"
-                Content="Удалить карточку"
+                Click="updateButton_Click"
+                Content="Обновить"
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" />
+
+            <Button
+                x:Name="deleteButton"
+                Width="120"
+                Height="30"
+                Margin="180,10,15,10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="Yellow"
+                Click="deleteButton_Click"
+                Content="Удалить"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18" />
+        </StackPanel>
     </Grid>
 </Window>

@@ -6,44 +6,61 @@
     xmlns:local="clr-namespace:MinjustInvent"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Принтеры"
-    Width="800"
+    Width="780"
     Height="450"
     Icon="png-transparent-paper-printing-printer-computer-icons-printer-ink-electronics-text.png"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
-        <Button
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" x:Name="phonesGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Office}" Header="Номер кабинета" Width="120"/>
+                <DataGridTextColumn Binding="{Binding NamePrinter}" Header="Модель принтера" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Cartridge}" Header="Картридж" Width="100"/>
+                <DataGridTextColumn Binding="{Binding InventNumber}" Header="Инвентарный номер" Width="200"/>
+                <DataGridTextColumn Binding="{Binding InternalTelephone}" Header="IP-адрес" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel HorizontalAlignment="Left"  Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="backButton"
             Width="120"
             Height="30"
-            Margin="10,10,15,0"
+            Margin="10,10,15,10"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Stretch"
             Background="Yellow"
             Click="Back"
             Content="Назад"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" />
-        <Button
-            Width="180"
-            Height="40"
-            Margin="10,0,15,15"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Background="Yellow"
-            Click="AddPrinter"
-            Content="Добавить принтер"
-            FontFamily="MS Reference Sans Serif"
-            FontSize="18" />
-        <Button
-            Width="170"
-            Height="40"
-            Margin="10,0,15,15"
+
+            <Button x:Name="updateButton"
+            Width="120"
+            Height="30"
+            Margin="180,10,15,10"
             HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Center"
             Background="Yellow"
-            Click="DeletePrinter"
-            Content="Удалить принтер"
+            Click="updateButton_Click"
+            Content="Обновить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" />
+
+            <Button x:Name="deleteButton"
+            Width="120"
+            Height="30"
+            Margin="180,10,15,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Yellow"
+            Click="deleteButton_Click"
+            Content="Удалить"
+            FontFamily="MS Reference Sans Serif"
+            FontSize="18" />
+        </StackPanel>
     </Grid>
 </Window>
