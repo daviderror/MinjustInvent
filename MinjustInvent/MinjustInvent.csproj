@@ -77,6 +77,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Printers.xaml.cs">
+      <DependentUpon>Printers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Telephones.xaml.cs">
       <DependentUpon>Telephones.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Printers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Telephones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -61,7 +61,7 @@
                 Background="Yellow"
                 Content="Принтеры"
                 FontFamily="MS Reference Sans Serif"
-                FontSize="18" />
+                FontSize="18" Click="Button_Click_3" />
             <Button
                 Width="100"
                 Height="30"

@@ -32,5 +32,12 @@ namespace MinjustInvent
             usb.Show();
             this.Close();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Printers printers = new Printers();
+            printers.Show();
+            this.Close();
+        }
     }
 }
