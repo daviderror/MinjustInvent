@@ -1,13 +1,13 @@
-﻿<Window x:Class="MinjustInvent.Usb"
+﻿<Window x:Class="MinjustInvent.Cards"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MinjustInvent"
         mc:Ignorable="d"
-        Icon="usb_flash_px1024.png"
+        Icon="e893212583c5486fbb041cfe63bed219.png"
         WindowStartupLocation="CenterScreen"
-        Title="Флеш-накопители" Height="450" Width="800">
+        Title="Пропуски" Height="450" Width="800">
     <Grid>
         <Button
                 Width="120"
@@ -21,14 +21,14 @@
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" />
         <Button
-                Width="180"
+                Width="190"
                 Height="40"
                 Margin="10,0,15,15"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Background="Yellow"
-                Click="AddUsb"
-                Content="Добавить USB"
+                Click="AddCard"
+                Content="Добавить карточку"
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" />
         <Button
@@ -38,8 +38,8 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
                 Background="Yellow"
-                Click="DeleteUsb"
-                Content="Удалить USB"
+                Click="DeleteCard"
+                Content="Удалить карточку"
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" />
     </Grid>

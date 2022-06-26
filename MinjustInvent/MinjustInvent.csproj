@@ -77,6 +77,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cards.xaml.cs">
+      <DependentUpon>Cards.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Printers.xaml.cs">
       <DependentUpon>Printers.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,10 @@
     <Compile Include="Usb.xaml.cs">
       <DependentUpon>Usb.xaml</DependentUpon>
     </Compile>
+    <Page Include="Cards.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Computers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,10 +172,19 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="arm.png" />
+    <Resource Include="1614548453_14-p-kompyuter-na-belom-fone-19.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="1614548453_14-p-kompyuter-na-belom-fone-19.png" />
+    <Resource Include="telephone-clipart-icon-7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="usb_flash_px1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="png-transparent-paper-printing-printer-computer-icons-printer-ink-electronics-text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="e893212583c5486fbb041cfe63bed219.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

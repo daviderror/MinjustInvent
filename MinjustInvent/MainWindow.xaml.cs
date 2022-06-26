@@ -39,5 +39,12 @@ namespace MinjustInvent
             printers.Show();
             this.Close();
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Cards card = new Cards();
+            card.Show();
+            this.Close();
+        }
     }
 }

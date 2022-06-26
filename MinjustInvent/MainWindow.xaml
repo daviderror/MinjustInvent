@@ -17,6 +17,7 @@
     </Window.Background>
     <Grid>
         <StackPanel
+            Margin="5"
             Height="32"
             VerticalAlignment="Top"
             Orientation="Horizontal">
@@ -71,7 +72,7 @@
                 Background="Yellow"
                 Content="Пропуски"
                 FontFamily="MS Reference Sans Serif"
-                FontSize="18" />
+                FontSize="18" Click="Button_Click_4" />
         </StackPanel>
     </Grid>
 </Window>

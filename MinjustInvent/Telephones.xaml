@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MinjustInvent"
         mc:Ignorable="d"
+        Icon="telephone-clipart-icon-7.png"
         WindowStartupLocation="CenterScreen"
         Title="Телефония" Height="450" Width="800">
     <Grid>
