@@ -8,12 +8,15 @@
         WindowStartupLocation="CenterScreen"
         Icon="1614548453_14-p-kompyuter-na-belom-fone-19.png"
         Title="АРМ" Height="450" Width="910">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="phonesGrid">
+        <DataGrid AutoGenerateColumns="False" x:Name="computersGrid">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="ФИО" Width="120"/>
                 <DataGridTextColumn Binding="{Binding Segment}" Header="Сегмент" Width="120"/>
@@ -36,7 +39,7 @@
             Content="Назад"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" />
-            
+
             <Button x:Name="updateButton"
             Width="120"
             Height="30"
@@ -48,7 +51,7 @@
             Content="Обновить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" />
-            
+
             <Button x:Name="deleteButton"
             Width="120"
             Height="30"

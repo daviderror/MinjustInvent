@@ -23,10 +23,8 @@
             Orientation="Horizontal">
             <Button
                 Width="100"
-                Height="30"
-                Margin="10,0,15,0"
+                Margin="10,0,15,2"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Top"
                 Background="Yellow"
                 Click="Button_Click_1"
                 Content="АРМ"
@@ -74,6 +72,6 @@
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" Click="Button_Click_4" />
         </StackPanel>
-        
+
     </Grid>
 </Window>
