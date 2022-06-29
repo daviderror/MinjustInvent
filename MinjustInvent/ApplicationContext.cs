@@ -10,7 +10,6 @@ namespace MinjustInvent
 {
     class ApplicationContext:DbContext
     {
-        public DbSet<Computer> Computers { get; set; }
         public ApplicationContext() : base("minjustDB") { }
     }
 }

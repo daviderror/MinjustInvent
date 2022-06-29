@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="1614548453_14-p-kompyuter-na-belom-fone-19.png"
-        Title="АРМ" Height="450" Width="910">
+        Title="АРМ" Height="450" Width="910" Loaded="Window_Loaded">
     <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,7 +16,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="computersGrid">
+        <DataGrid AutoGenerateColumns="False" x:Name="computersGrid" SelectionChanged="computersGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="ФИО" Width="120"/>
                 <DataGridTextColumn Binding="{Binding Segment}" Header="Сегмент" Width="120"/>
@@ -26,8 +26,8 @@
                 <DataGridTextColumn Binding="{Binding InventNumber}" Header="Инвентарный номер" Width="125"/>
                 <DataGridTextColumn Binding="{Binding ComputerName}" Header="Имя компьютера" Width="150"/>
             </DataGrid.Columns>
-        </DataGrid>
-        <StackPanel HorizontalAlignment="Left"  Grid.Row="1" Orientation="Horizontal">
+        </DataGrid >
+        <StackPanel HorizontalAlignment="Left"  Grid.Row="1" Orientation="Horizontal" Width="901">
             <Button x:Name="backButton"
             Width="120"
             Height="30"
@@ -43,7 +43,7 @@
             <Button x:Name="updateButton"
             Width="120"
             Height="30"
-            Margin="180,10,15,10"
+            Margin="265,10,15,10"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Background="Yellow"

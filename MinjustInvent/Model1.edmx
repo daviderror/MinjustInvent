@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище minjustdbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Computers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Segment" Type="text" Nullable="false" />
+          <Property Name="IP" Type="int" Nullable="false" />
+          <Property Name="OperationSystem" Type="text" Nullable="false" />
+          <Property Name="Memory" Type="int" Nullable="false" />
+          <Property Name="InventNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ComputerName" Type="text" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departament">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartamentName" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Name" Type="text" Nullable="false" />
+          <Property Name="Card" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="СityPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InternalPhone" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Office" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Post" Type="text" Nullable="false" />
+          <Property Name="NameDepartament" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Printers1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Office" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="NamePrinter" Type="text" Nullable="false" />
+          <Property Name="Cartridge" Type="text" Nullable="false" />
+          <Property Name="InventNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IP" Type="int" />
+        </EntityType>
+        <EntityType Name="USB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SizeUsb" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Computers_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Computers" Type="Self.Computers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Computers">
+              <PropertyRef Name="Memory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departament_Printers1">
+          <End Role="Printers1" Type="Self.Printers1" Multiplicity="1" />
+          <End Role="Departament" Type="Self.Departament" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Printers1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departament">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_USB">
+          <End Role="USB" Type="Self.USB" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="USB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Printers1_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Printers1" Type="Self.Printers1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Printers1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище minjustdbModelContainer">
+          <EntitySet Name="Computers" EntityType="Self.Computers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departament" EntityType="Self.Departament" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Printers1" EntityType="Self.Printers1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USB" EntityType="Self.USB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Computers_Employee" Association="Self.FK_Computers_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Computers" EntitySet="Computers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departament_Printers1" Association="Self.FK_Departament_Printers1">
+            <End Role="Printers1" EntitySet="Printers1" />
+            <End Role="Departament" EntitySet="Departament" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_USB" Association="Self.FK_Employee_USB">
+            <End Role="USB" EntitySet="USB" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Printers1_Employee" Association="Self.FK_Printers1_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Printers1" EntitySet="Printers1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="minjustdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Computers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Segment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IP" Type="Int32" Nullable="false" />
+          <Property Name="OperationSystem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Memory" Type="Int32" Nullable="false" />
+          <Property Name="InventNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Computers_Employee" FromRole="Computers" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Departament">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartamentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Printers1" Relationship="Self.FK_Departament_Printers1" FromRole="Departament" ToRole="Printers1" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Card" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="СityPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InternalPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Office" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Post" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NameDepartament" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Computers" Relationship="Self.FK_Computers_Employee" FromRole="Employee" ToRole="Computers" />
+          <NavigationProperty Name="USB" Relationship="Self.FK_Employee_USB" FromRole="Employee" ToRole="USB" />
+          <NavigationProperty Name="Printers1" Relationship="Self.FK_Printers1_Employee" FromRole="Employee" ToRole="Printers1" />
+        </EntityType>
+        <EntityType Name="Printers1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Office" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="NamePrinter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cartridge" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InventNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="Int32" />
+          <NavigationProperty Name="Departament" Relationship="Self.FK_Departament_Printers1" FromRole="Printers1" ToRole="Departament" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Printers1_Employee" FromRole="Printers1" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="USB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SizeUsb" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_USB" FromRole="USB" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Computers_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Computers" Type="Self.Computers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Computers">
+              <PropertyRef Name="Memory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departament_Printers1">
+          <End Role="Printers1" Type="Self.Printers1" Multiplicity="1" />
+          <End Role="Departament" Type="Self.Departament" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Printers1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departament">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_USB">
+          <End Role="USB" Type="Self.USB" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="USB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Printers1_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Printers1" Type="Self.Printers1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Printers1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="minjustdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Computers" EntityType="Self.Computers" />
+          <EntitySet Name="Departament" EntityType="Self.Departament" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Printers1" EntityType="Self.Printers1" />
+          <EntitySet Name="USB" EntityType="Self.USB" />
+          <AssociationSet Name="FK_Computers_Employee" Association="Self.FK_Computers_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Computers" EntitySet="Computers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departament_Printers1" Association="Self.FK_Departament_Printers1">
+            <End Role="Printers1" EntitySet="Printers1" />
+            <End Role="Departament" EntitySet="Departament" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_USB" Association="Self.FK_Employee_USB">
+            <End Role="USB" EntitySet="USB" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Printers1_Employee" Association="Self.FK_Printers1_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Printers1" EntitySet="Printers1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище minjustdbModelContainer" CdmEntityContainer="minjustdbEntities">
+          <EntitySetMapping Name="Computers">
+            <EntityTypeMapping TypeName="minjustdbModel.Computers">
+              <MappingFragment StoreEntitySet="Computers">
+                <ScalarProperty Name="Segment" ColumnName="Segment" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="OperationSystem" ColumnName="OperationSystem" />
+                <ScalarProperty Name="Memory" ColumnName="Memory" />
+                <ScalarProperty Name="InventNumber" ColumnName="InventNumber" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departament">
+            <EntityTypeMapping TypeName="minjustdbModel.Departament">
+              <MappingFragment StoreEntitySet="Departament">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DepartamentName" ColumnName="DepartamentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="minjustdbModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Card" ColumnName="Card" />
+                <ScalarProperty Name="СityPhone" ColumnName="СityPhone" />
+                <ScalarProperty Name="InternalPhone" ColumnName="InternalPhone" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="NameDepartament" ColumnName="NameDepartament" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Printers1">
+            <EntityTypeMapping TypeName="minjustdbModel.Printers1">
+              <MappingFragment StoreEntitySet="Printers1">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="NamePrinter" ColumnName="NamePrinter" />
+                <ScalarProperty Name="Cartridge" ColumnName="Cartridge" />
+                <ScalarProperty Name="InventNumber" ColumnName="InventNumber" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USB">
+            <EntityTypeMapping TypeName="minjustdbModel.USB">
+              <MappingFragment StoreEntitySet="USB">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="SizeUsb" ColumnName="SizeUsb" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
