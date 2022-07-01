@@ -63,6 +63,17 @@
             Content="Удалить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" />
+            <Button x:Name="printData"
+            Width="120"
+            Height="30"
+            Margin="180,10,15,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Yellow"
+            Click="deleteButton_Click"
+            Content="Удалить"
+            FontFamily="MS Reference Sans Serif"
+            FontSize="18" />
         </StackPanel>
     </Grid>
 </Window>

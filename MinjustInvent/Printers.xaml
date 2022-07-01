@@ -25,8 +25,9 @@
                 <DataGridTextColumn Binding="{Binding InternalTelephone}" Header="IP-адрес" Width="120"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel HorizontalAlignment="Left"  Grid.Row="1" Orientation="Horizontal">
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="True"  Grid.Row="1" >
             <Button x:Name="backButton"
+            DockPanel.Dock="Left"
             Width="120"
             Height="30"
             Margin="10,10,15,10"
@@ -36,21 +37,31 @@
             Click="Back"
             Content="Назад"
             FontFamily="MS Reference Sans Serif"
-            FontSize="18" />
+            FontSize="18" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
 
             <Button x:Name="updateButton"
+            DockPanel.Dock="Left"
             Width="120"
             Height="30"
             Margin="180,10,15,10"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            VerticalAlignment="Stretch"
             Background="Yellow"
             Click="updateButton_Click"
             Content="Обновить"
             FontFamily="MS Reference Sans Serif"
-            FontSize="18" />
+            FontSize="18" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
 
             <Button x:Name="deleteButton"
+            DockPanel.Dock="Right"
             Width="120"
             Height="30"
             Margin="180,10,15,10"
@@ -60,7 +71,11 @@
             Click="deleteButton_Click"
             Content="Удалить"
             FontFamily="MS Reference Sans Serif"
-            FontSize="18" />
-        </StackPanel>
+            FontSize="18" BorderThickness="0,1,1,1" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+        </DockPanel>
     </Grid>
 </Window>

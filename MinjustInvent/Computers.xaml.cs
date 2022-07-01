@@ -1,11 +1,12 @@
-﻿using System.Windows;
+﻿using MinjustInvent.Models;
 using System;
-using System.Windows.Controls;
-using System.Data.SqlClient;
-using System.Data;
+using System.ComponentModel;
 using System.Configuration;
-using System.Linq;
+using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace MinjustInvent
 {
@@ -17,11 +18,24 @@ namespace MinjustInvent
         string connectionString;
         SqlDataAdapter adapter;
         DataTable computersTable;
+        ComputerContext db;
         public Computers()
         {
             InitializeComponent();
             connectionString = ConfigurationManager.ConnectionStrings["DBMinjust"].ConnectionString;
+
+            db = new ComputerContext();
+            db.computers.Load();
+            computersGrid.ItemsSource = db.computers.Local.ToBindingList();
+
+            this.Closing += Computers_Closing;
         }
+
+        private void Computers_Closing(object sender, CancelEventArgs e)
+        {
+            db.Dispose();
+        }
+
         private void UpdateDB()
         {
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter);
@@ -29,24 +43,23 @@ namespace MinjustInvent
         }
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDB();
+            db.SaveChanges();
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (computersGrid.SelectedItems != null)
+            if (computersGrid.SelectedItems.Count > 0)
             {
                 for (int i = 0; i < computersGrid.SelectedItems.Count; i++)
                 {
-                    DataRowView dataRowView = computersGrid.SelectedItems[i] as DataRowView;
-                    if (dataRowView != null)
+                    Computers computers = computersGrid.SelectedItems[i] as Computers;
+                    if (computers != null)
                     {
-                        DataRow dataRow = (DataRow)dataRowView.Row;
-                        dataRow.Delete();
+                        db.computers.Remove(computers);
                     }
                 }
             }
-            UpdateDB();
+            db.SaveChanges();
         }
 
         private void Back(object sender, RoutedEventArgs e)
@@ -93,7 +106,7 @@ namespace MinjustInvent
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string sql = "SELECT * FROM Computers";
+            string sql = "SELECT Name FROM Employee AND SELECT * FROM Computers";
             computersTable = new DataTable();
             SqlConnection connection = null;
             try
@@ -104,7 +117,7 @@ namespace MinjustInvent
                 //установка команды на добавление для вызова хранимой процедуры
                 adapter.InsertCommand = new SqlCommand("sp_InsertComputers", connection);
                 adapter.InsertCommand.CommandType = CommandType.StoredProcedure;
-              //  adapter.InsertCommand.Parameters.Add(new SqlParameter("@Name", SqlDbType.Text, 50, "Name"));
+                //  adapter.InsertCommand.Parameters.Add(new SqlParameter("@Name", SqlDbType.Text, 50, "Name"));
                 adapter.InsertCommand.Parameters.Add(new SqlParameter("@Segment", SqlDbType.Text, 50, "Segment"));
                 adapter.InsertCommand.Parameters.Add(new SqlParameter("@Ip", SqlDbType.NVarChar, 0, "Ip"));
                 adapter.InsertCommand.Parameters.Add(new SqlParameter("@OperationSystem", SqlDbType.Text, 0, "OperationSystem"));

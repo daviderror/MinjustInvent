@@ -82,13 +82,28 @@
       <DependentUpon>Cards.xaml</DependentUpon>
     </Compile>
     <Compile Include="Computers.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Minjust.tt</DependentUpon>
     </Compile>
     <Compile Include="Departament.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Minjust.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Minjust.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Minjust.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Minjust.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Minjust.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Minjust.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Minjust.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Minjust.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -105,17 +120,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ComputerContext.cs" />
+    <Compile Include="Models\ComputerProp.cs" />
     <Compile Include="Printers.xaml.cs">
       <DependentUpon>Printers.xaml</DependentUpon>
     </Compile>
     <Compile Include="Printers1.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Minjust.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Minjust.tt</DependentUpon>
     </Compile>
     <Compile Include="Telephones.xaml.cs">
       <DependentUpon>Telephones.xaml</DependentUpon>
     </Compile>
     <Compile Include="USB.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Minjust.tt</DependentUpon>
     </Compile>
     <Compile Include="Usb.xaml.cs">
       <DependentUpon>Usb.xaml</DependentUpon>
@@ -179,6 +199,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Minjust.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Minjust.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Minjust.edmx.diagram">
+      <DependentUpon>Minjust.edmx</DependentUpon>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -221,6 +248,16 @@
     <Resource Include="e893212583c5486fbb041cfe63bed219.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Minjust.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Minjust.edmx</DependentUpon>
+      <LastGenOutput>Minjust.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Minjust.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Minjust.edmx</DependentUpon>
+      <LastGenOutput>Minjust.cs</LastGenOutput>
+    </Content>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

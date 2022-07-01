@@ -12,16 +12,12 @@ namespace MinjustInvent
     using System;
     using System.Collections.Generic;
     
-    public partial class Computers
+    public partial class sysdiagrams
     {
-        public string Segment { get; set; }
-        public string IP { get; set; }
-        public string OperationSystem { get; set; }
-        public int Memory { get; set; }
-        public string InventNumber { get; set; }
-        public string ComputerName { get; set; }
-        public int Id { get; set; }
-    
-        public virtual Employee Employee { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
