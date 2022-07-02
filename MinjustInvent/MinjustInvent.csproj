@@ -219,10 +219,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="111-132.jpg" />
+    <Resource Include="Resources\111-132.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="iconka.png" />
+    <Resource Include="Resources\iconka.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -233,19 +233,19 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="1614548453_14-p-kompyuter-na-belom-fone-19.png" />
+    <Resource Include="Resources\1614548453_14-p-kompyuter-na-belom-fone-19.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="telephone-clipart-icon-7.png" />
+    <Resource Include="Resources\telephone-clipart-icon-7.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="usb_flash_px1024.png" />
+    <Resource Include="Resources\usb_flash_px1024.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="png-transparent-paper-printing-printer-computer-icons-printer-ink-electronics-text.png" />
+    <Resource Include="Resources\png-transparent-paper-printing-printer-computer-icons-printer-ink-electronics-text.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="e893212583c5486fbb041cfe63bed219.png" />
+    <Resource Include="Resources\e893212583c5486fbb041cfe63bed219.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Minjust.Context.tt">
