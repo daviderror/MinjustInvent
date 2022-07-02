@@ -12,12 +12,15 @@ namespace MinjustInvent
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class KartochkiOrder
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public System.Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Card { get; set; }
+        public string ReceivedSignature { get; set; }
+        public string IssuedSignature { get; set; }
+        public Nullable<System.Guid> DepartmentId { get; set; }
+    
+        public virtual Department Department { get; set; }
     }
 }

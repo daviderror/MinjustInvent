@@ -4,17 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a86191bfd2df446f932488501eb79f73" Name="Diagram1" ZoomLevel="80">
-        <EntityTypeShape EntityType="minjustDBModel.Computers" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="minjustDBModel.Departament" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="minjustDBModel.Employee" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="minjustDBModel.Printers1" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="minjustDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="minjustDBModel.USB" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <AssociationConnector Association="minjustDBModel.FK_Computers_Employee" ManuallyRouted="false" />
-        <AssociationConnector Association="minjustDBModel.FK_Departament_Printers1" ManuallyRouted="false" />
-        <AssociationConnector Association="minjustDBModel.FK_Employee_USB" ManuallyRouted="false" />
-        <AssociationConnector Association="minjustDBModel.FK_Printers1_Employee" ManuallyRouted="false" />
+      <Diagram DiagramId="56314b3b161246b6b78f97a0d49c92c1" Name="Diagram1">
+        <EntityTypeShape EntityType="minjustDBModel.ARMOrder" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="minjustDBModel.Department" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="minjustDBModel.KartochkiOrder" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="minjustDBModel.PrinterOrder" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="minjustDBModel.TelephonyOrder" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="minjustDBModel.USBOrder" Width="1.5" PointX="7.875" PointY="1.5" />
+        <AssociationConnector Association="minjustDBModel.FK__Kartochki__Depar__3D5E1FD2" />
+        <AssociationConnector Association="minjustDBModel.FK__Telephony__Depar__38996AB5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:MinjustInvent"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Icon="1614548453_14-p-kompyuter-na-belom-fone-19.png"
-        Title="АРМ" Height="450" Width="910" Loaded="Window_Loaded">
+        Icon="Resources/1614548453_14-p-kompyuter-na-belom-fone-19.png"
+        Title="АРМ" Height="700" Width="1400">
     <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,16 +16,24 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="computersGrid" SelectionChanged="computersGrid_SelectionChanged">
+        <DataGrid AutoGenerateColumns="False" x:Name="computersGrid" CanUserAddRows="True" SelectionChanged="computersGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" Header="ФИО" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Num}" Header="№п/п" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="ФИО" Width="220"/>
                 <DataGridTextColumn Binding="{Binding Segment}" Header="Сегмент" Width="120"/>
-                <DataGridTextColumn Binding="{Binding Ip}" Header="IP-адрес" Width="125"/>
+                <DataGridTextColumn Binding="{Binding IpAdress}" Header="IP-адрес" Width="125"/>
                 <DataGridTextColumn Binding="{Binding OperationSystem}" Header="Операционная система" Width="150"/>
                 <DataGridTextColumn Binding="{Binding Memory}" Header="Оперативная память" Width="150"/>
                 <DataGridTextColumn Binding="{Binding InventNumber}" Header="Инвентарный номер" Width="125"/>
                 <DataGridTextColumn Binding="{Binding ComputerName}" Header="Имя компьютера" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Services}" Header="Сервисы" Width="100"/>
+                <DataGridTextColumn Binding="{Binding AccountName}" Header="Название учетной записи" Width="180"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить" Click="deleteButton_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid >
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -51,7 +59,7 @@
             </Button>
 
             <Button x:Name="updateButton"
-            Grid.Column="1"
+            Grid.Column="2"
             Width="120"
             Height="30"
             Margin="10"
@@ -59,7 +67,7 @@
             VerticalAlignment="Center"
             Background="Yellow"
             Click="updateButton_Click"
-            Content="Обновить"
+            Content="Сохранить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" >
                 <Button.Effect>
@@ -67,7 +75,7 @@
                 </Button.Effect>
             </Button>
 
-            <Button x:Name="deleteButton"
+            <!--<Button x:Name="deleteButton"
             Grid.Column ="2"
             Width="120"
             Height="30"
@@ -82,7 +90,7 @@
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
-            </Button>
+            </Button>-->
             <Button x:Name="printData"
             Grid.Column="3"
             Width="120"
