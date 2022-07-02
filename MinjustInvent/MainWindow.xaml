@@ -8,12 +8,12 @@
     Title="Инвентарь Минюста"
     Width="750"
     Height="450"
-    Icon="iconka.png"
+    Icon="Resources/iconka.png"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Background>
-        <ImageBrush ImageSource="111-132.jpg" />
+        <ImageBrush ImageSource="Resources\111-132.jpg" />
     </Window.Background>
     <Grid>
         <StackPanel

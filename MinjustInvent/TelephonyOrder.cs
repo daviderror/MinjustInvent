@@ -12,16 +12,17 @@ namespace MinjustInvent
     using System;
     using System.Collections.Generic;
     
-    public partial class Printers1
+    public partial class TelephonyOrder
     {
-        public int Id { get; set; }
-        public string Office { get; set; }
-        public string NamePrinter { get; set; }
-        public string Cartridge { get; set; }
-        public string InventNumber { get; set; }
-        public Nullable<int> IP { get; set; }
+        public System.Guid Id { get; set; }
+        public Nullable<int> Num { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> CabinetNum { get; set; }
+        public string Position { get; set; }
+        public string CityPhone { get; set; }
+        public string InternalPhone { get; set; }
+        public Nullable<System.Guid> DepartmentId { get; set; }
     
-        public virtual Departament Departament { get; set; }
-        public virtual Employee Employee { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

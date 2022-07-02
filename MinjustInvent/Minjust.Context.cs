@@ -25,11 +25,11 @@ namespace MinjustInvent
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Computers> Computers { get; set; }
-        public virtual DbSet<Departament> Departament { get; set; }
-        public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<Printers1> Printers1 { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<USB> USB { get; set; }
+        public virtual DbSet<ARMOrder> ARMOrder { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
+        public virtual DbSet<KartochkiOrder> KartochkiOrder { get; set; }
+        public virtual DbSet<PrinterOrder> PrinterOrder { get; set; }
+        public virtual DbSet<TelephonyOrder> TelephonyOrder { get; set; }
+        public virtual DbSet<USBOrder> USBOrder { get; set; }
     }
 }

@@ -12,26 +12,22 @@ namespace MinjustInvent
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
+        public Department()
         {
-            this.Computers = new HashSet<Computers>();
+            this.KartochkiOrder = new HashSet<KartochkiOrder>();
+            this.TelephonyOrder = new HashSet<TelephonyOrder>();
         }
     
+        public System.Guid Id { get; set; }
         public string Name { get; set; }
-        public string Card { get; set; }
-        public string СityPhone { get; set; }
-        public string InternalPhone { get; set; }
-        public int Id { get; set; }
-        public string Office { get; set; }
-        public string Post { get; set; }
-        public string NameDepartament { get; set; }
+        public string IndexNum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Computers> Computers { get; set; }
-        public virtual USB USB { get; set; }
-        public virtual Printers1 Printers1 { get; set; }
+        public virtual ICollection<KartochkiOrder> KartochkiOrder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TelephonyOrder> TelephonyOrder { get; set; }
     }
 }

@@ -12,11 +12,13 @@ namespace MinjustInvent
     using System;
     using System.Collections.Generic;
     
-    public partial class Departament
+    public partial class PrinterOrder
     {
-        public int Id { get; set; }
-        public string DepartamentName { get; set; }
-    
-        public virtual Printers1 Printers1 { get; set; }
+        public System.Guid Id { get; set; }
+        public Nullable<int> CabinetNum { get; set; }
+        public string Name { get; set; }
+        public string InventNumber { get; set; }
+        public string Cartridge { get; set; }
+        public string IP { get; set; }
     }
 }

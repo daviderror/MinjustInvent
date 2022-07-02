@@ -12,12 +12,18 @@ namespace MinjustInvent
     using System;
     using System.Collections.Generic;
     
-    public partial class USB
+    public partial class ARMOrder
     {
-        public string SerialNumber { get; set; }
-        public string SizeUsb { get; set; }
-        public int Id { get; set; }
-    
-        public virtual Employee Employee { get; set; }
+        public System.Guid Id { get; set; }
+        public int Num { get; set; }
+        public string Name { get; set; }
+        public string Segment { get; set; }
+        public string IpAdress { get; set; }
+        public string OperationSystem { get; set; }
+        public string Memory { get; set; }
+        public string InventNumber { get; set; }
+        public string ComputerName { get; set; }
+        public string Services { get; set; }
+        public string AccountName { get; set; }
     }
 }
