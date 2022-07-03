@@ -19,6 +19,7 @@ namespace MinjustInvent.Model
                 comp.Card == this.Card &&
                 comp.ReceivedSignature == this.ReceivedSignature &&
                 comp.DepartmentId == this.DepartmentId &&
+                comp.DepartmentIndex == this.DepartmentIndex &&
                 comp.IssuedSignature == this.IssuedSignature)
                 return true;
             else

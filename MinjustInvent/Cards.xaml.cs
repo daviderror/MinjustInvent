@@ -47,6 +47,8 @@ namespace MinjustInvent
                         if (itemsForDelete.Count > 0)
                             minjustDb.KartochkiOrder.RemoveRange(minjustDb.KartochkiOrder.Where(_ => itemsForDelete.Contains(_.Id)));
 
+                        StringBuilder indexErrors = new StringBuilder();
+
                         var itemsForUpdate = dataSource.Where(_ => _.Id != Guid.Empty && !_.DBEquals(beforeOrders.FirstOrDefault(x => x.Id == _.Id))).ToList();
                         if (itemsForUpdate.Count > 0)
                         {
@@ -55,17 +57,28 @@ namespace MinjustInvent
                             foreach (var item in itemsForUpdateFromDb)
                             {
                                 var c = itemsForUpdate.First(_ => _.Id == item.Id);
+                                var error = allDeps.FirstOrDefault(x => x.IndexNum == c.DepartmentIndex);
+                                if (error == null && !string.IsNullOrEmpty(c.DepartmentIndex))
+                                    indexErrors.Append($"Нет отдела с индексом {c.DepartmentIndex}\n");
                                 item.Name = c.Name;
                                 item.Card = c.Card;
                                 item.ReceivedSignature = c.ReceivedSignature;
                                 item.IssuedSignature = c.IssuedSignature;
                                 item.DepartmentId = allDeps.FirstOrDefault(x => x.IndexNum == c.DepartmentIndex)?.Id;
+                                item.Department = allDeps.FirstOrDefault(x => x.IndexNum == c.DepartmentIndex);
                             }
                         }
 
                         var itemsForAdd = dataSource.Where(_ => _.Id == Guid.Empty).ToList();
                         if (itemsForAdd.Count > 0)
                         {
+                            foreach (var added in itemsForAdd)
+                            {
+                                var error = allDeps.FirstOrDefault(x => x.IndexNum == added.DepartmentIndex);
+                                if (error == null && !string.IsNullOrEmpty(added.DepartmentIndex))
+                                    indexErrors.Append($"Нет отдела с индексом {added.DepartmentIndex}\n");
+                            }
+
                             var addData = itemsForAdd.Select(_ => new KartochkiOrder()
                             {
                                 Name = _.Name,
@@ -80,6 +93,9 @@ namespace MinjustInvent
 
                         minjustDb.SaveChanges();
                         cardsGrid_Loaded(null, null);
+
+                        if (!string.IsNullOrEmpty(indexErrors.ToString()))
+                            MessageBox.Show(indexErrors.ToString(), "Не удалось сохранить данные об отделах", MessageBoxButton.OK);
                     }
             }
             catch (Exception ex)
