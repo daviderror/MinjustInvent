@@ -13,29 +13,33 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid x:Name="phonesGrid" AutoGenerateColumns="False">
+        <DataGrid x:Name="cardsGrid" Loaded="cardsGrid_Loaded" AutoGenerateColumns="False">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить" Click="deleteButton_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
-                <DataGridTextColumn
-                    Width="200"
-                    Binding="{Binding }"
-                    Header="Должность" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding Name}"
                     Header="ФИО" />
                 <DataGridTextColumn
                     Width="200"
-                    Binding="{Binding NameDepartament}"
+                    Binding="{Binding DepartmentIndex}"
                     Header="Отдел" />
                 <DataGridTextColumn
-                    Width="100"
-                    Binding="{Binding Office}"
-                    Header="Кабинет" />
-                <DataGridTextColumn
                     Width="200"
-                    Binding="{Binding InternalPhone}"
+                    Binding="{Binding Card}"
                     Header="Номер карты" />
-               
+                <DataGridTextColumn
+                    Width="120"
+                    Binding="{Binding ReceivedSignature}"
+                    Header="Подпись(кто получил)" />
+                <DataGridTextColumn
+                    Width="120"
+                    Binding="{Binding IssuedSignature}"
+                    Header="Подпись(кто выдавал)" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -73,7 +77,7 @@
             Click="updateButton_Click"
             Content="Сохранить"
             FontFamily="MS Reference Sans Serif"
-            FontSize="18" Grid.ColumnSpan="2" Loaded="updateButton_Loaded" >
+            FontSize="18" Grid.ColumnSpan="2">
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>

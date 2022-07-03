@@ -20,8 +20,8 @@ namespace MinjustInvent
     /// </summary>
     public partial class Cards : Window
     {
-        private List<KartochkiOrder> dataSource;
-        private List<KartochkiOrder> beforeOrders;
+        private List<CardModel> dataSource;
+        private List<CardModel> beforeOrders;
         private List<Department> allDeps;
         public Cards()
         {
@@ -68,11 +68,10 @@ namespace MinjustInvent
                         {
                             var addData = itemsForAdd.Select(_ => new KartochkiOrder()
                             {
-                                CabinetNum = _.CabinetNum,
-                                Position = _.Position,
-                                Num = _.Num,
                                 Name = _.Name,
-
+                                Card = _.Card,
+                                IssuedSignature = _.IssuedSignature,
+                                ReceivedSignature = _.ReceivedSignature,
                                 DepartmentId = allDeps.FirstOrDefault(x => x.IndexNum == _.DepartmentIndex)?.Id,
                                 Id = Guid.NewGuid()
                             });
@@ -91,22 +90,41 @@ namespace MinjustInvent
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (cardsGrid_Loaded.SelectedIndex < dataSource.Count)
+            if (cardsGrid.SelectedIndex < dataSource.Count)
             {
-                dataSource.RemoveAt(phonesGrid.SelectedIndex);
-                phonesGrid.ItemsSource = null;
-                phonesGrid.ItemsSource = dataSource;
+                dataSource.RemoveAt(cardsGrid.SelectedIndex);
+                cardsGrid.ItemsSource = null;
+                cardsGrid.ItemsSource = dataSource;
             }
-        }
-
-        private void updateButton_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void cardsGrid_Loaded(object sender, RoutedEventArgs e)
         {
+            using (minjustDBEntities minjustDb = new minjustDBEntities())
+                cardsGrid.ItemsSource = dataSource = minjustDb.KartochkiOrder.OrderBy(_ => _.Name).Select(_ =>
+                new CardModel
+                {
+                    Id = _.Id,
+                    DepartmentId = _.DepartmentId,
+                    DepartmentIndex = _.Department.IndexNum,
+                    Card = _.Card,
+                    IssuedSignature = _.IssuedSignature,
+                    Name = _.Name,
+                    ReceivedSignature = _.ReceivedSignature
+                }).ToList();
+            beforeOrders = new List<CardModel>();
 
+            foreach (var d in dataSource)
+                beforeOrders.Add(new CardModel
+                {
+                    Id = d.Id,
+                    Name = d.Name,
+                    Card = d.Card,
+                    DepartmentId = d.DepartmentId,
+                    DepartmentIndex = d.DepartmentIndex,
+                    IssuedSignature = d.IssuedSignature,
+                    ReceivedSignature = d.ReceivedSignature
+                });
         }
     }
 }
