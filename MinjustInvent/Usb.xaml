@@ -25,7 +25,7 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Loaded="Grid_Loaded">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>

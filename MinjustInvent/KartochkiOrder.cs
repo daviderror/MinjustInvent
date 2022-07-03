@@ -22,5 +22,11 @@ namespace MinjustInvent
         public Nullable<System.Guid> DepartmentId { get; set; }
     
         public virtual Department Department { get; set; }
+        public string DepartmentIndex { get; internal set; }
+
+        internal bool DBEquals(KartochkiOrder kartochkiOrder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
