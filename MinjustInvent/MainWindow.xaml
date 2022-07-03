@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MinjustInvent"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     Title="Инвентарь Минюста"
     Width="750"
     Height="450"
@@ -25,11 +26,12 @@
             Height="32"
             VerticalAlignment="Top"
             Orientation="Horizontal" Grid.ColumnSpan="2">
-            <Button
+            <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}" ToolTip="MaterialDesignFloatingMiniDarkButton"
                 Width="100"
                 Margin="10,0,15,2"
                 HorizontalAlignment="Stretch"
-                Background="Yellow"
+                Foreground="Black"
+                Background="YellowGreen"
                 Click="Button_Click_1"
                 Content="АРМ"
                 FontFamily="MS Reference Sans Serif"
@@ -86,11 +88,10 @@
                 Height="30"
                 Margin="16,0,0,0"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Top"
                 Background="Yellow"
                 Content="Пропуски"
                 FontFamily="MS Reference Sans Serif"
-                FontSize="18" Click="Button_Click_4" >
+                FontSize="18" Click="Button_Click_4" VerticalAlignment="Top" >
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>

@@ -90,7 +90,7 @@
             Margin="10"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
-                    Foreground="White"
+            Foreground="White"
             Background="Red"
             Click="deleteButton_Click"
             Content="Удалить"
