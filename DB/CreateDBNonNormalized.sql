@@ -23,7 +23,7 @@ IP nvarchar(50)
 
 Create Table Department(
 Id uniqueidentifier primary key,
-Name nvarchar not null,
+Name nvarchar(2000) not null,
 IndexNum nvarchar(10)
 )
 

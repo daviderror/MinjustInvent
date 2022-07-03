@@ -28,38 +28,39 @@ namespace MinjustInvent
         {
             try
             {
-                using (minjustDBEntities minjustDb = new minjustDBEntities())
-                {
-                    var itemsForDelete = beforeOrders.Where(_ => !dataSource.Any(x => x.Id == _.Id)).Select(_ => _.Id).ToList();
-                    if (itemsForDelete.Count > 0)
-                        minjustDb.PrinterOrder.RemoveRange(minjustDb.PrinterOrder.Where(_ => itemsForDelete.Contains(_.Id)));
+                if (MessageBox.Show("Вы уверены что хотите сохранить изменения?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    using (minjustDBEntities minjustDb = new minjustDBEntities())
+                    {
+                        var itemsForDelete = beforeOrders.Where(_ => !dataSource.Any(x => x.Id == _.Id)).Select(_ => _.Id).ToList();
+                        if (itemsForDelete.Count > 0)
+                            minjustDb.PrinterOrder.RemoveRange(minjustDb.PrinterOrder.Where(_ => itemsForDelete.Contains(_.Id)));
                     
-                    var itemsForUpdate = dataSource.Where(_ => _.Id != Guid.Empty && !_.DBEquals(beforeOrders.FirstOrDefault(x => x.Id == _.Id))).ToList();
-                    if (itemsForUpdate.Count > 0)
-                    {
-                        var itemsForUpdateIds = itemsForUpdate.Select(_ => _.Id).ToList();
-                        var itemsForUpdateFromDb = minjustDb.PrinterOrder.Where(_ => itemsForUpdateIds.Contains(_.Id)).ToList();
-                        foreach (var item in itemsForUpdateFromDb)
+                        var itemsForUpdate = dataSource.Where(_ => _.Id != Guid.Empty && !_.DBEquals(beforeOrders.FirstOrDefault(x => x.Id == _.Id))).ToList();
+                        if (itemsForUpdate.Count > 0)
                         {
-                            var s = itemsForUpdate.First(_ => _.Id == item.Id);
-                            item.InventNumber = s.InventNumber;
-                            item.Name = s.Name;
-                            item.IP = s.IP;
-                            item.CabinetNum = s.CabinetNum;
-                            item.Cartridge = s.Cartridge;
+                            var itemsForUpdateIds = itemsForUpdate.Select(_ => _.Id).ToList();
+                            var itemsForUpdateFromDb = minjustDb.PrinterOrder.Where(_ => itemsForUpdateIds.Contains(_.Id)).ToList();
+                            foreach (var item in itemsForUpdateFromDb)
+                            {
+                                var s = itemsForUpdate.First(_ => _.Id == item.Id);
+                                item.InventNumber = s.InventNumber;
+                                item.Name = s.Name;
+                                item.IP = s.IP;
+                                item.CabinetNum = s.CabinetNum;
+                                item.Cartridge = s.Cartridge;
+                            }
                         }
-                    }
 
-                    var itemsForAdd = dataSource.Where(_ => _.Id == Guid.Empty).ToList();
-                    if (itemsForAdd.Count > 0)
-                    {
-                        foreach (var i in itemsForAdd)
-                            i.Id = Guid.NewGuid();
-                        minjustDb.PrinterOrder.AddRange(itemsForAdd);
+                        var itemsForAdd = dataSource.Where(_ => _.Id == Guid.Empty).ToList();
+                        if (itemsForAdd.Count > 0)
+                        {
+                            foreach (var i in itemsForAdd)
+                                i.Id = Guid.NewGuid();
+                            minjustDb.PrinterOrder.AddRange(itemsForAdd);
+                        }
+                        minjustDb.SaveChanges();
+                        phonesGrid_Loaded(null, null);
                     }
-                    minjustDb.SaveChanges();
-                    phonesGrid_Loaded(null, null);
-                }
             }
             catch (Exception ex)
             {

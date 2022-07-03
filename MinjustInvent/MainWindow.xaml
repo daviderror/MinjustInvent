@@ -92,6 +92,20 @@
                 </Button.Effect>
             </Button>
         </StackPanel>
-
+        <Button
+                Width="100"
+                Height="30"
+                Margin="20,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Background="Yellow"
+                Click="Button_Click_5"
+                Content="Отделы"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Window>

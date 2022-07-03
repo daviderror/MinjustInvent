@@ -26,7 +26,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2000" Nullable="false" />
           <Property Name="IndexNum" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="KartochkiOrder">
@@ -154,7 +154,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="IndexNum" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="KartochkiOrder" Relationship="minjustDBModel.FK__Kartochki__Depar__3D5E1FD2" FromRole="Department" ToRole="KartochkiOrder" />
           <NavigationProperty Name="TelephonyOrder" Relationship="minjustDBModel.FK__Telephony__Depar__38996AB5" FromRole="Department" ToRole="TelephonyOrder" />

@@ -29,5 +29,16 @@ namespace MinjustInvent
         public virtual ICollection<KartochkiOrder> KartochkiOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TelephonyOrder> TelephonyOrder { get; set; }
+
+        public bool DBEquals(Department comp)
+        {
+            if (comp == null)
+                return false;
+            if (comp.Name == this.Name &&
+                comp.IndexNum == this.IndexNum)
+                return true;
+            else
+                return false;
+        }
     }
 }

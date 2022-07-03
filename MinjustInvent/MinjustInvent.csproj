@@ -87,6 +87,9 @@
     <Compile Include="Department.cs">
       <DependentUpon>minjust.tt</DependentUpon>
     </Compile>
+    <Compile Include="Departments.xaml.cs">
+      <DependentUpon>Departments.xaml</DependentUpon>
+    </Compile>
     <Compile Include="KartochkiOrder.cs">
       <DependentUpon>minjust.tt</DependentUpon>
     </Compile>
@@ -128,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Computers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Departments.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -46,5 +46,12 @@ namespace MinjustInvent
             card.Show();
             this.Close();
         }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Departments deps = new Departments();
+            deps.Show();
+            this.Close();
+        }
     }
 }

@@ -23,44 +23,45 @@ namespace MinjustInvent
         {
             try
             {
-                using (minjustDBEntities minjustDb = new minjustDBEntities())
-                {
-                    var itemsForDelete = beforeOrders.Where(_ => !dataSource.Any(x => x.Id == _.Id)).Select(_ => _.Id).ToList();
-                    if (itemsForDelete.Count > 0)
-                        minjustDb.ARMOrder.RemoveRange(minjustDb.ARMOrder.Where(_ => itemsForDelete.Contains(_.Id)));
-
-                    var itemsForUpdate = dataSource.Where(_ => _.Id != Guid.Empty && !_.DBEquals(beforeOrders.FirstOrDefault(x => x.Id == _.Id))).ToList();
-                    if (itemsForUpdate.Count > 0)
+                if (MessageBox.Show("Вы уверены что хотите сохранить изменения?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    using (minjustDBEntities minjustDb = new minjustDBEntities())
                     {
-                        var itemsForUpdateIds = itemsForUpdate.Select(_ => _.Id).ToList();
-                        var itemsForUpdateFromDb = minjustDb.ARMOrder.Where(_ => itemsForUpdateIds.Contains(_.Id)).ToList();
-                        foreach (var item in itemsForUpdateFromDb)
+                        var itemsForDelete = beforeOrders.Where(_ => !dataSource.Any(x => x.Id == _.Id)).Select(_ => _.Id).ToList();
+                        if (itemsForDelete.Count > 0)
+                            minjustDb.ARMOrder.RemoveRange(minjustDb.ARMOrder.Where(_ => itemsForDelete.Contains(_.Id)));
+
+                        var itemsForUpdate = dataSource.Where(_ => _.Id != Guid.Empty && !_.DBEquals(beforeOrders.FirstOrDefault(x => x.Id == _.Id))).ToList();
+                        if (itemsForUpdate.Count > 0)
                         {
-                            var s = itemsForUpdate.First(_ => _.Id == item.Id);
-                            item.InventNumber = s.InventNumber;
-                            item.IpAdress = s.IpAdress;
-                            item.Memory = s.Memory;
-                            item.Name = s.Name;
-                            item.Num = s.Num;
-                            item.OperationSystem = s.OperationSystem;
-                            item.Segment = s.Segment;
-                            item.Services = s.Services;
-                            item.AccountName = s.AccountName;
-                            item.ComputerName = s.ComputerName;
+                            var itemsForUpdateIds = itemsForUpdate.Select(_ => _.Id).ToList();
+                            var itemsForUpdateFromDb = minjustDb.ARMOrder.Where(_ => itemsForUpdateIds.Contains(_.Id)).ToList();
+                            foreach (var item in itemsForUpdateFromDb)
+                            {
+                                var s = itemsForUpdate.First(_ => _.Id == item.Id);
+                                item.InventNumber = s.InventNumber;
+                                item.IpAdress = s.IpAdress;
+                                item.Memory = s.Memory;
+                                item.Name = s.Name;
+                                item.Num = s.Num;
+                                item.OperationSystem = s.OperationSystem;
+                                item.Segment = s.Segment;
+                                item.Services = s.Services;
+                                item.AccountName = s.AccountName;
+                                item.ComputerName = s.ComputerName;
+                            }
                         }
-                    }
                     
-                    var itemsForAdd = dataSource.Where(_ => _.Id == Guid.Empty).ToList();
-                    if (itemsForAdd.Count > 0)
-                    {
-                        foreach (var i in itemsForAdd)
-                            i.Id = Guid.NewGuid();
-                        minjustDb.ARMOrder.AddRange(itemsForAdd);
-                    }
+                        var itemsForAdd = dataSource.Where(_ => _.Id == Guid.Empty).ToList();
+                        if (itemsForAdd.Count > 0)
+                        {
+                            foreach (var i in itemsForAdd)
+                                i.Id = Guid.NewGuid();
+                            minjustDb.ARMOrder.AddRange(itemsForAdd);
+                        }
 
-                    minjustDb.SaveChanges();
-                    Grid_Loaded(null, null);
-                }
+                        minjustDb.SaveChanges();
+                        Grid_Loaded(null, null);
+                    }
             }
             catch (Exception ex)
             {
