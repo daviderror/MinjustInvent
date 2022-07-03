@@ -19,6 +19,8 @@ namespace MinjustInvent
     /// </summary>
     public partial class Telephones : Window
     {
+        private List<TelephonyOrder> dataSource;
+        private List<TelephonyOrder> beforeOrders;
         public Telephones()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace MinjustInvent
             mainWindow.Show();
             this.Close();
         }
+
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -37,6 +40,26 @@ namespace MinjustInvent
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void phonesGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (minjustDBEntities minjustDb = new minjustDBEntities())
+                phonesGrid.ItemsSource = dataSource = minjustDb.TelephonyOrder.OrderBy(_ => _.Num).ToList();
+            beforeOrders = new List<TelephonyOrder>();
+
+            foreach (var d in dataSource)
+                beforeOrders.Add(new TelephonyOrder
+                {
+                    Id = d.Id,
+                    Name = d.Name,
+                    CabinetNum = d.CabinetNum,
+                    CityPhone = d.CityPhone,
+                    Department = d.Department,
+                    InternalPhone = d.InternalPhone,
+                    Num = d.Num,
+                    Position = d.Position,
+                });
         }
     }
 }

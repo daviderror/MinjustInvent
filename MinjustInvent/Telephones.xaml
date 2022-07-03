@@ -18,19 +18,23 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid x:Name="phonesGrid" AutoGenerateColumns="False">
+        <DataGrid x:Name="phonesGrid" Loaded="phonesGrid_Loaded" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn
+                    Width="50"
+                    Binding="{Binding Num}"
+                    Header="№п/п" />
+                <DataGridTextColumn
                     Width="120"
-                    Binding="{Binding Post}"
+                    Binding="{Binding Position}"
                     Header="Должность" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding Name}"
                     Header="ФИО" />
                 <DataGridTextColumn
-                    Width="200"
-                    Binding="{Binding NameDepartament}"
+                    Width="60"
+                    Binding="{Binding Department.IndexNum}"
                     Header="Отдел" />
                 <DataGridTextColumn
                     Width="200"
@@ -42,7 +46,7 @@
                     Header="Внутренний телефонный номер" />
                 <DataGridTextColumn
                     Width="100"
-                    Binding="{Binding Office}"
+                    Binding="{Binding CabinetNum}"
                     Header="Кабинет" />
             </DataGrid.Columns>
         </DataGrid>
