@@ -16,7 +16,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="computersGrid" CanUserAddRows="True" SelectionChanged="computersGrid_SelectionChanged">
+        <DataGrid AutoGenerateColumns="False" x:Name="computersGrid" CanUserAddRows="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Num}" Header="№п/п" Width="50"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="ФИО" Width="220"/>

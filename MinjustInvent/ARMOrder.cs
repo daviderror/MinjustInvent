@@ -25,5 +25,24 @@ namespace MinjustInvent
         public string ComputerName { get; set; }
         public string Services { get; set; }
         public string AccountName { get; set; }
+
+        public bool DBEquals(ARMOrder comp)
+        {
+            if (comp == null)
+                return false;
+            if (comp.InventNumber == this.InventNumber &&
+                comp.IpAdress == this.IpAdress &&
+                comp.Memory == this.Memory &&
+                comp.Name == this.Name &&
+                comp.Num == this.Num &&
+                comp.OperationSystem == this.OperationSystem &&
+                comp.Segment == this.Segment &&
+                comp.Services == this.Services &&
+                comp.AccountName == this.AccountName &&
+                comp.ComputerName == this.ComputerName)
+                return true;
+            else
+                return false;
+        }
     }
 }

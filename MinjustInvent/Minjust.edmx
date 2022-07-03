@@ -18,8 +18,8 @@
           <Property Name="Memory" Type="nvarchar" MaxLength="100" />
           <Property Name="InventNumber" Type="nvarchar" MaxLength="100" />
           <Property Name="ComputerName" Type="nvarchar" MaxLength="200" />
-          <Property Name="Services" Type="nvarchar" MaxLength="1" />
-          <Property Name="AccountName" Type="nvarchar" MaxLength="1" />
+          <Property Name="Services" Type="nvarchar" MaxLength="1000" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -146,8 +146,8 @@
           <Property Name="Memory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="InventNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ComputerName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Services" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="AccountName" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Services" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="AccountName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -229,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
