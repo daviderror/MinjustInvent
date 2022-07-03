@@ -19,6 +19,11 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <DataGrid x:Name="phonesGrid" Loaded="phonesGrid_Loaded" AutoGenerateColumns="False">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить" Click="deleteButton_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="50"
@@ -34,7 +39,7 @@
                     Header="ФИО" />
                 <DataGridTextColumn
                     Width="60"
-                    Binding="{Binding Department.IndexNum}"
+                    Binding="{Binding DepartmentIndex}"
                     Header="Отдел" />
                 <DataGridTextColumn
                     Width="200"
@@ -74,7 +79,7 @@
             </Button>
 
             <Button x:Name="updateButton"
-            Grid.Column="1"
+            Grid.Column="2"
             Width="120"
             Height="30"
             Margin="10"
@@ -82,7 +87,7 @@
             VerticalAlignment="Center"
             Background="Yellow"
             Click="updateButton_Click"
-            Content="Обновить"
+            Content="Сохранить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" >
                 <Button.Effect>
@@ -90,7 +95,7 @@
                 </Button.Effect>
             </Button>
 
-            <Button x:Name="deleteButton"
+            <!--<Button x:Name="deleteButton"
             Grid.Column ="2"
             Width="120"
             Height="30"
@@ -105,7 +110,7 @@
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
-            </Button>
+            </Button>-->
             <Button x:Name="printData"
             Grid.Column="3"
             Width="120"

@@ -108,6 +108,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>minjust.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\CardModel.cs" />
+    <Compile Include="Model\TelephonyModel.cs" />
     <Compile Include="PrinterOrder.cs">
       <DependentUpon>minjust.tt</DependentUpon>
     </Compile>
