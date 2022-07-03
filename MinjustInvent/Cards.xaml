@@ -71,36 +71,20 @@
             VerticalAlignment="Center"
             Background="Yellow"
             Click="updateButton_Click"
-            Content="Обновить"
+            Content="Сохранить"
             FontFamily="MS Reference Sans Serif"
-            FontSize="18" >
+            FontSize="18" Grid.ColumnSpan="2" >
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
             </Button>
 
-            <Button x:Name="deleteButton"
-            Grid.Column ="2"
-            Width="120"
-            Height="30"
-            Margin="10"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Background="Yellow"
-            Click="deleteButton_Click"
-            Content="Удалить"
-            FontFamily="MS Reference Sans Serif"
-            FontSize="18" >
-                <Button.Effect>
-                    <DropShadowEffect/>
-                </Button.Effect>
-            </Button>
             <Button x:Name="printData"
             Grid.Column="3"
             Width="120"
             Height="30"
             Margin="10"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Background="Yellow"
             Click="deleteButton_Click"
