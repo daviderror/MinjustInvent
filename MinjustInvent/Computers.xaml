@@ -59,17 +59,17 @@
             </Button>
 
             <Button x:Name="updateButton"
-            Grid.Column="1"
+            Grid.Column="3"
             Width="120"
             Height="30"
-            Margin="10"
+            Margin="10,2,150,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Background="Yellow"
             Click="updateButton_Click"
             Content="Сохранить"
             FontFamily="MS Reference Sans Serif"
-            FontSize="18" Grid.ColumnSpan="2" >
+            FontSize="18" >
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>

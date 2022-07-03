@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Icon="Resources/e893212583c5486fbb041cfe63bed219.png"
         WindowStartupLocation="CenterScreen"
-        Title="Пропуски" Height="450" Width="800" MinHeight="400" MinWidth="735">
+        Title="Пропуски" Height="450" Width="800" MinHeight="400" MinWidth="800">
     <Grid Loaded="cardsGrid_Loaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -67,10 +67,10 @@
             </Button>
 
             <Button x:Name="updateButton"
-            Grid.Column="1"
+            Grid.Column="2"
             Width="120"
             Height="30"
-            Margin="10"
+            Margin="110,10,158,10"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Background="Yellow"
@@ -83,16 +83,17 @@
                 </Button.Effect>
             </Button>
 
-            <Button x:Name="printData"
+            <Button x:Name="deleteData"
             Grid.Column="3"
             Width="120"
             Height="30"
             Margin="10"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
-            Background="Yellow"
+                    Foreground="White"
+            Background="Red"
             Click="deleteButton_Click"
-            Content="Печать"
+            Content="Удалить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" >
                 <Button.Effect>

@@ -94,11 +94,65 @@ namespace MinjustInvent
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (MessageBox.Show("Вы уверены что хотите удалить строку?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    using (minjustDBEntities minjustDb = new minjustDBEntities())
+                    {
+                        var itemsForDelete = beforeOrders.Where(_ => !dataSource.Any(x => x.Id == _.Id)).Select(_ => _.Id).ToList();
+                        if (itemsForDelete.Count > 0)
+                            minjustDb.TelephonyOrder.RemoveRange(minjustDb.TelephonyOrder.Where(_ => itemsForDelete.Contains(_.Id)));
+
+                        var itemsForUpdate = dataSource.Where(_ => _.Id != Guid.Empty && !_.DBEquals(beforeOrders.FirstOrDefault(x => x.Id == _.Id))).ToList();
+                        if (itemsForUpdate.Count > 0)
+                        {
+                            var itemsForUpdateIds = itemsForUpdate.Select(_ => _.Id).ToList();
+                            var itemsForUpdateFromDb = minjustDb.TelephonyOrder.Where(_ => itemsForUpdateIds.Contains(_.Id)).ToList();
+                            foreach (var item in itemsForUpdateFromDb)
+                            {
+                                var s = itemsForUpdate.First(_ => _.Id == item.Id);
+                                item.Name = s.Name;
+                                item.CityPhone = s.CityPhone;
+                                item.CabinetNum = s.CabinetNum;
+                                item.InternalPhone = s.InternalPhone;
+                                item.Position = s.Position;
+                                item.Num = s.Num;
+                                item.DepartmentId = allDeps.FirstOrDefault(x => x.IndexNum == s.DepartmentIndex)?.Id;
+                            }
+                        }
+
+                        var itemsForAdd = dataSource.Where(_ => _.Id == Guid.Empty).ToList();
+                        if (itemsForAdd.Count > 0)
+                        {
+                            var addData = itemsForAdd.Select(_ => new TelephonyOrder()
+                            {
+                                CabinetNum = _.CabinetNum,
+                                Position = _.Position,
+                                Num = _.Num,
+                                Name = _.Name,
+                                InternalPhone = _.InternalPhone,
+                                CityPhone = _.CityPhone,
+                                DepartmentId = allDeps.FirstOrDefault(x => x.IndexNum == _.DepartmentIndex)?.Id,
+                                Id = Guid.NewGuid()
+                            });
+                            minjustDb.TelephonyOrder.AddRange(addData);
+                        }
+
+                        minjustDb.SaveChanges();
+                        phonesGrid_Loaded(null, null);
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "При выполнении произошла ошибка", MessageBoxButton.OK);
+            }
             if (phonesGrid.SelectedIndex >= dataSource.Count)
                 return;
             dataSource.RemoveAt(phonesGrid.SelectedIndex);
             phonesGrid.ItemsSource = null;
             phonesGrid.ItemsSource = dataSource;
+
+
         }
 
         private void phonesGrid_Loaded(object sender, RoutedEventArgs e)

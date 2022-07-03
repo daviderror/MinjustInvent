@@ -95,16 +95,17 @@
                 </Button.Effect>
             </Button>
 
-            <Button x:Name="printData"
+            <Button x:Name="deleteData"
             Grid.Column="3"
             Width="120"
             Height="30"
             Margin="10"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
-            Background="Yellow"
+                    Foreground="White"
+            Background="Red"
             Click="deleteButton_Click"
-            Content="Печать"
+            Content="Удалить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" >
                 <Button.Effect>
