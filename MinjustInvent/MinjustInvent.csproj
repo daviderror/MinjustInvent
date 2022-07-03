@@ -243,6 +243,7 @@
       <DependentUpon>minjust.edmx</DependentUpon>
       <LastGenOutput>minjust.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\png-clipart-silhouette-of-people-on-round-frame-illustration-human-resources-computer-icons-organization-management-human-resources-human-resource-management-public-relations.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />

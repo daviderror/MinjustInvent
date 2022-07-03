@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MinjustInvent"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Icon="Resources/e893212583c5486fbb041cfe63bed219.png"
+        Icon="Resources/png-clipart-silhouette-of-people-on-round-frame-illustration-human-resources-computer-icons-organization-management-human-resources-human-resource-management-public-relations.png"
         Title="Departments" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -51,38 +51,22 @@
             </Button>
 
             <Button x:Name="updateButton"
-            Grid.Column="2"
-            Width="120"
-            Height="30"
-            Margin="10"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Background="Yellow"
-            Click="updateButton_Click"
-            Content="Сохранить"
-            FontFamily="MS Reference Sans Serif"
-            FontSize="18" >
-                <Button.Effect>
-                    <DropShadowEffect/>
-                </Button.Effect>
-            </Button>
-
-            <!--<Button x:Name="deleteButton"
-            Grid.Column ="2"
+            Grid.Column="1"
             Width="120"
             Height="30"
             Margin="10"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Background="Yellow"
-            Click="deleteButton_Click"
-            Content="Удалить"
+            Click="updateButton_Click"
+            Content="Сохранить"
             FontFamily="MS Reference Sans Serif"
-            FontSize="18" >
+            FontSize="18" Grid.ColumnSpan="2" >
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
-            </Button>-->
+            </Button>
+
             <Button x:Name="printData"
             Grid.Column="3"
             Width="120"
