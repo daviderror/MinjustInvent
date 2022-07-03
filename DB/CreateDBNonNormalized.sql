@@ -8,8 +8,8 @@ OperationSystem nvarchar(200),
 Memory nvarchar(100),
 InventNumber nvarchar(100),
 ComputerName nvarchar(200),
-Services nvarchar,
-AccountName nvarchar
+Services nvarchar(1000),
+AccountName nvarchar(1000)
 )
 
 Create Table PrinterOrder(
