@@ -13,13 +13,17 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="phonesGrid">
+        <DataGrid AutoGenerateColumns="False" x:Name="usbsGrid" Loaded="phonesGrid_Loaded">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Office}" Header="Номер кабинета" Width="150"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="ФИО сотрудника" Width="300"/>
                 <DataGridTextColumn Binding="{Binding SerialNumber}" Header="Серийный номер" Width="180"/>
-                <DataGridTextColumn Binding="{Binding SizeUsb}" Header="Объем USB накопителя" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Size}" Header="Объем USB накопителя" Width="150"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить" Click="deleteButton_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -45,15 +49,15 @@
             </Button>
 
             <Button x:Name="updateButton"
-            Grid.Column="1"
+            Grid.Column="2"
             Width="120"
             Height="30"
             Margin="10"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Background="Yellow"
             Click="updateButton_Click"
-            Content="Обновить"
+            Content="Сохранить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" >
                 <Button.Effect>
@@ -61,7 +65,7 @@
                 </Button.Effect>
             </Button>
 
-            <Button x:Name="deleteButton"
+            <!--<Button x:Name="deleteButton"
             Grid.Column ="2"
             Width="120"
             Height="30"
@@ -76,13 +80,13 @@
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
-            </Button>
+            </Button>-->
             <Button x:Name="printData"
             Grid.Column="3"
             Width="120"
             Height="30"
             Margin="10"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Background="Yellow"
             Click="deleteButton_Click"

@@ -29,7 +29,7 @@ namespace MinjustInvent
                     if (itemsForDelete.Count > 0)
                         minjustDb.ARMOrder.RemoveRange(minjustDb.ARMOrder.Where(_ => itemsForDelete.Contains(_.Id)));
 
-                    var itemsForUpdate = dataSource.Where(_ => _.Id != Guid.Empty && !_.DBEquals(beforeOrders.First(x => x.Id == _.Id))).ToList();
+                    var itemsForUpdate = dataSource.Where(_ => _.Id != Guid.Empty && !_.DBEquals(beforeOrders.FirstOrDefault(x => x.Id == _.Id))).ToList();
                     if (itemsForUpdate.Count > 0)
                     {
                         var itemsForUpdateIds = itemsForUpdate.Select(_ => _.Id).ToList();
@@ -59,6 +59,7 @@ namespace MinjustInvent
                     }
 
                     minjustDb.SaveChanges();
+                    Grid_Loaded(null, null);
                 }
             }
             catch (Exception ex)
@@ -72,7 +73,8 @@ namespace MinjustInvent
             if (computersGrid.SelectedIndex >= dataSource.Count)
                 return;
             dataSource.RemoveAt(computersGrid.SelectedIndex);
-            computersGrid.ItemsSource = new List<ARMOrder>(dataSource);
+            computersGrid.ItemsSource = null;
+            computersGrid.ItemsSource = dataSource;
         }
 
         private void Back(object sender, RoutedEventArgs e)

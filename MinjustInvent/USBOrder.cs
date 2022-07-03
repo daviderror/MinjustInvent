@@ -18,5 +18,17 @@ namespace MinjustInvent
         public string Name { get; set; }
         public string SerialNumber { get; set; }
         public string Size { get; set; }
+
+        public bool DBEquals(USBOrder comp)
+        {
+            if (comp == null)
+                return false;
+            if (comp.Name == this.Name &&
+                comp.SerialNumber == this.SerialNumber &&
+                comp.Size == this.Size)
+                return true;
+            else
+                return false;
+        }
     }
 }

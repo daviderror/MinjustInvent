@@ -20,5 +20,19 @@ namespace MinjustInvent
         public string InventNumber { get; set; }
         public string Cartridge { get; set; }
         public string IP { get; set; }
+
+        public bool DBEquals(PrinterOrder comp)
+        {
+            if (comp == null)
+                return false;
+            if (comp.CabinetNum == this.CabinetNum &&
+                comp.Name == this.Name &&
+                comp.InventNumber == this.InventNumber &&
+                comp.Cartridge == this.Cartridge &&
+                comp.IP == this.IP)
+                return true;
+            else
+                return false;
+        }
     }
 }
