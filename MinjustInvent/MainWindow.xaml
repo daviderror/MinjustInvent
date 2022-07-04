@@ -7,10 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     Title="Инвентарь Минюста"
-    Width="750"
+    Width="850"
     Height="450"
     Icon="Resources/iconka.png"
-    ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Background>
@@ -22,31 +21,33 @@
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
         <StackPanel
-            Margin="5,5,5,0"
+            Margin="15,5,5,0"
             Height="32"
             VerticalAlignment="Top"
             Orientation="Horizontal" Grid.ColumnSpan="2">
-            <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}" ToolTip="MaterialDesignFloatingMiniDarkButton"
-                Width="100"
-                Margin="10,0,15,2"
+            <Button
+                Width="80"
+                Margin="10,0,15,0"
                 HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
                 Foreground="Black"
-                Background="YellowGreen"
+                Background="LightGreen"
                 Click="Button_Click_1"
                 Content="АРМ"
                 FontFamily="MS Reference Sans Serif"
-                FontSize="18" >
+                FontSize="18" RenderTransformOrigin="0.125,0.312" >
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
             </Button>
             <Button
-                Width="120"
+                Width="140"
                 Height="30"
                 Margin="10,0,15,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Top"
-                Background="Yellow"
+                  Foreground="Black"
+                Background="LightGreen"
                 Click="Button_Click"
                 Content="Телефония"
                 FontFamily="MS Reference Sans Serif"
@@ -56,12 +57,13 @@
                 </Button.Effect>
             </Button>
             <Button
-                Width="180"
+                Width="200"
                 Height="30"
                 Margin="10,0,15,2"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Bottom"
-                Background="Yellow"
+                  Foreground="Black"
+                Background="LightGreen"
                 Content="Флеш-накопители"
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" Click="Button_Click_2" >
@@ -70,12 +72,13 @@
                 </Button.Effect>
             </Button>
             <Button
-                Width="100"
+                Width="130"
                 Height="30"
                 Margin="10,0,15,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Top"
-                Background="Yellow"
+                  Foreground="Black"
+                Background="LightGreen"
                 Content="Принтеры"
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" Click="Button_Click_3" >
@@ -84,11 +87,12 @@
                 </Button.Effect>
             </Button>
             <Button
-                Width="100"
+                Width="120"
                 Height="30"
                 Margin="16,0,0,0"
                 HorizontalAlignment="Right"
-                Background="Yellow"
+                  Foreground="Black"
+                Background="LightGreen"
                 Content="Пропуски"
                 FontFamily="MS Reference Sans Serif"
                 FontSize="18" Click="Button_Click_4" VerticalAlignment="Top" >
@@ -98,12 +102,13 @@
             </Button>
         </StackPanel>
         <Button
-                Width="100"
+                Width="110"
                 Height="30"
                 Margin="20,0,0,10"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                Background="Yellow"
+                Foreground="Black"
+                Background="LightGreen"
                 Click="Button_Click_5"
                 Content="Отделы"
                 FontFamily="MS Reference Sans Serif"
