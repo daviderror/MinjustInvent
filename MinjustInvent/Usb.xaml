@@ -38,7 +38,8 @@
             Margin="10"
             HorizontalAlignment="Left"
             VerticalAlignment="Stretch"
-            Background="Yellow"
+            Foreground="Black"
+            Background="LightGreen"
             Click="Back"
             Content="Назад"
             FontFamily="MS Reference Sans Serif"
@@ -49,13 +50,14 @@
             </Button>
 
             <Button x:Name="updateButton"
-            Grid.Column="1"
-            Width="120"
+            Grid.Column="2"
+            Width="130"
             Height="30"
-            Margin="10"
+            Margin="10 , 0, 50 ,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Background="Yellow"
+             Foreground="Black"
+             Background="LightGreen"
             Click="updateButton_Click"
             Content="Сохранить"
             FontFamily="MS Reference Sans Serif"
@@ -65,16 +67,17 @@
                 </Button.Effect>
             </Button>
 
-            <Button x:Name="printData"
+            <Button x:Name="deleteButton"
             Grid.Column="3"
             Width="120"
             Height="30"
             Margin="10"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
-            Background="Yellow"
+             Foreground="Black"
+             Background="LightGreen"
             Click="deleteButton_Click"
-            Content="Печать"
+            Content="Удалить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" >
                 <Button.Effect>

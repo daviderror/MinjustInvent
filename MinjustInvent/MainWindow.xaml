@@ -11,6 +11,7 @@
     Height="450"
     Icon="Resources/iconka.png"
     WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize"
     mc:Ignorable="d">
     <Window.Background>
         <ImageBrush ImageSource="Resources\111-132.jpg" />
