@@ -57,7 +57,6 @@ namespace MinjustInvent
                                 item.ReceivedSignature = c.ReceivedSignature;
                                 item.IssuedSignature = c.IssuedSignature;
                                 item.DepartmentId = allDeps.FirstOrDefault(x => x.IndexNum == c.DepartmentIndex)?.Id;
-                                item.Department = allDeps.FirstOrDefault(x => x.IndexNum == c.DepartmentIndex);
                             }
                         }
 
