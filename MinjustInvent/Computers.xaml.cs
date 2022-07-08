@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace MinjustInvent
 {
@@ -105,6 +106,17 @@ namespace MinjustInvent
                     Segment = d.Segment,
                     Services = d.Services
                 });
+        }
+
+        private void printButton_Click(object sender, RoutedEventArgs e)
+        {
+            Excel.Application excelapp = new Excel.Application();
+            Excel.Workbook workbook = excelapp.Workbooks.Add();
+            Excel.Worksheet worksheet = workbook.ActiveSheet;
+
+            for(int i=0;i<DataGridTextColum)
+
+            excelapp.Visible = true;
         }
     }
 }
