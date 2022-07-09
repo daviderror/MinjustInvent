@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ExcelFilePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:/Users/User/Documents/gavno)</Value>
+      <Value Profile="(Default)">C:/Users/User/Рабочий стол</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -269,6 +269,8 @@
       <DependentUpon>minjust.edmx</DependentUpon>
       <LastGenOutput>minjust.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\musor.png" />
+    <Resource Include="Resources\save.png" />
     <Resource Include="Resources\folder.png" />
     <Resource Include="Resources\excel.png" />
     <Resource Include="Resources\png-clipart-silhouette-of-people-on-round-frame-illustration-human-resources-computer-icons-organization-management-human-resources-human-resource-management-public-relations.png" />

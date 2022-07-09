@@ -1,6 +1,8 @@
-﻿using MinjustInvent.Model;
+﻿using MinjustInvent.Excel;
+using MinjustInvent.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -15,11 +17,17 @@ namespace MinjustInvent
         private List<CardModel> dataSource;
         private List<CardModel> beforeOrders;
         private List<Department> allDeps;
+        BackgroundWorker excelSaver = new BackgroundWorker();
         public Cards()
         {
             InitializeComponent();
             using (minjustDBEntities minjustDb = new minjustDBEntities())
                 allDeps = minjustDb.Department.ToList();
+           
+            filePathText.Text = ExcelManager.FilePath;
+
+            excelSaver.DoWork += ExcelWork;
+            excelSaver.RunWorkerCompleted += ExcelWorkCompleted;
         }
         private void Back(object sender, RoutedEventArgs e)
         {
@@ -132,6 +140,35 @@ namespace MinjustInvent
                     IssuedSignature = d.IssuedSignature,
                     ReceivedSignature = d.ReceivedSignature
                 });
+        }
+        void ExcelWork(object sender, DoWorkEventArgs e)
+        {
+            var excel = new ARMExcelManager();
+
+            e.Result = excel.SaveExcel(dataSource).Result;
+        }
+
+        void ExcelWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result as bool? == true)
+                MessageBox.Show("Файл excel сохранен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("Не удалось соханить excel-файл", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+        private void setFileNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
+            var result = openFileDlg.ShowDialog();
+            if (result.ToString() != string.Empty)
+            {
+                ExcelManager.FilePath = openFileDlg.SelectedPath;
+                filePathText.Text = openFileDlg.SelectedPath;
+            }
+        }
+
+        private void printButton_Click(object sender, RoutedEventArgs e)
+        {
+            excelSaver.RunWorkerAsync();
         }
     }
 }

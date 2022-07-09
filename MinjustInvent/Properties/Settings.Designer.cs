@@ -25,7 +25,7 @@ namespace MinjustInvent.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:/Users/User/Documents/gavno)")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:/Users/User/Рабочий стол")]
         public string ExcelFilePath {
             get {
                 return ((string)(this["ExcelFilePath"]));

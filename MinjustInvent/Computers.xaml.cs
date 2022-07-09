@@ -131,7 +131,7 @@ namespace MinjustInvent
             if (e.Result as bool? == true)
                 MessageBox.Show("Файл excel сохранен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             else
-                MessageBox.Show("Не удалось соханить excel-файл", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Не удалось сохранить excel-файл", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void Window_Closed(object sender, EventArgs e)
