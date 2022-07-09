@@ -15,7 +15,11 @@ namespace MinjustInvent.Excel
         public static string FilePath
         {
             get => Properties.Settings.Default.ExcelFilePath;
-            set => Properties.Settings.Default.ExcelFilePath = value;
+            set 
+            { 
+                Properties.Settings.Default.ExcelFilePath = value;
+                Properties.Settings.Default.Save();
+            }
         }
 
         public string FileName { get => throw new System.NotImplementedException(); }
