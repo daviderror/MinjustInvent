@@ -1,10 +1,9 @@
-﻿using System;
+﻿using MinjustInvent.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace MinjustInvent
 {
@@ -15,9 +14,16 @@ namespace MinjustInvent
     {
         private List<ARMOrder> dataSource;
         private List<ARMOrder> beforeOrders;
+
+        BackgroundWorker excelSaver = new BackgroundWorker();
+
         public Computers()
         {
             InitializeComponent();
+            filePathText.Text = ExcelManager.FilePath;
+
+            excelSaver.DoWork += ExcelWork;
+            excelSaver.RunWorkerCompleted += ExcelWorkCompleted;
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
@@ -110,13 +116,39 @@ namespace MinjustInvent
 
         private void printButton_Click(object sender, RoutedEventArgs e)
         {
-            Excel.Application excelapp = new Excel.Application();
-            Excel.Workbook workbook = excelapp.Workbooks.Add();
-            Excel.Worksheet worksheet = workbook.ActiveSheet;
+            excelSaver.RunWorkerAsync();
+        }
 
-            for(int i=0;i<DataGridTextColum)
+        void ExcelWork(object sender, DoWorkEventArgs e)
+        {
+            var excel = new ARMExcelManager();
 
-            excelapp.Visible = true;
+            e.Result = excel.SaveExcel(dataSource).Result;
+        }
+
+        void ExcelWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result as bool? == true)
+                MessageBox.Show("Файл excel сохранен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("Не удалось соханить excel-файл", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            excelSaver.DoWork -= ExcelWork;
+            excelSaver.RunWorkerCompleted -= ExcelWorkCompleted;
+        }
+
+        private void setFileNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
+            var result = openFileDlg.ShowDialog();
+            if (result.ToString() != string.Empty)
+            {
+                ExcelManager.FilePath = openFileDlg.SelectedPath;
+                filePathText.Text = openFileDlg.SelectedPath;
+            }
         }
     }
 }

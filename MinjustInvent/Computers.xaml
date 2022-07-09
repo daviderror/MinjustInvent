@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:MinjustInvent"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        Closed="Window_Closed"
         Icon="Resources/1614548453_14-p-kompyuter-na-belom-fone-19.png"
-        Title="АРМ" Height="700" Width="1400" MinWidth="1400">
+        Title="АРМ" MinHeight="400" Height="700" Width="1400" MinWidth="1200">
     <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -37,47 +38,66 @@
         </DataGrid >
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="341*"></ColumnDefinition>
-                <ColumnDefinition Width="7*"/>
-                <ColumnDefinition Width="348*"></ColumnDefinition>
-                <ColumnDefinition Width="348*"></ColumnDefinition>
-                <ColumnDefinition Width="348*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton"
-            Width="120"
-            Height="30"
-            Margin="23,10,0,10"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Stretch"
-            Background="LightGreen"
-            Foreground="Black"
-            Click="Back"
-            Content="Назад"
-            FontFamily="MS Reference Sans Serif"
-            FontSize="18" >
-                <Button.Effect>
-                    <DropShadowEffect/>
-                </Button.Effect>
-            </Button>
-            <Button x:Name="printButton"
-            Width="200"
-            Height="30"
-            Margin="199,10,0,10"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Stretch"
-            Background="LightGreen"
-            Foreground="Black"
-            
-            Content="Импорт в Excel"
-            FontFamily="MS Reference Sans Serif"
-            FontSize="18" Grid.ColumnSpan="3" Click="printButton_Click" >
-                <Button.Effect>
-                    <DropShadowEffect/>
-                </Button.Effect>
-            </Button>
-
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="backButton"
+                Width="50"
+                Height="30"
+                Margin="23,10,0,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                Background="LightGreen"
+                Foreground="Black"
+                Click="Back"
+                FontFamily="MS Reference Sans Serif"
+                ToolTip="Назад"
+                FontSize="18">
+                    <Image Source="Resources/back.png" />
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <Button x:Name="printButton"
+                Width="50"
+                Height="30"
+                Margin="50,10,0,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                Background="LightGreen"
+                Foreground="Black"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18"
+                Click="printButton_Click"
+                ToolTip="Експорт в excel">
+                    <Image Source="Resources/excel.png" Width="25" />
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <Button x:Name="setFileNameButton"
+                Width="50"
+                Height="30"
+                Margin="20,10,0,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                Background="LightGreen"
+                Foreground="Black"
+                ToolTip="Путь для сохранения excel-файла"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18"
+                Click="setFileNameButton_Click">
+                    <Image Source="Resources/folder.png"></Image>
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <TextBlock Margin="15,18" FontFamily="MS Reference Sans Serif"
+                FontSize="13" x:Name="filePathText"></TextBlock>
+            </StackPanel>
             <Button x:Name="updateButton"
-            Grid.Column="4"
+            Grid.Column="2"
             Width="130"
             Height="30"
             Margin="9,10,169,10"
@@ -95,7 +115,7 @@
             </Button>
 
             <Button x:Name="deleteData"
-            Grid.Column="4"
+            Grid.Column="2"
             Width="120"
             Height="30"
             Margin="0,10,10,10"

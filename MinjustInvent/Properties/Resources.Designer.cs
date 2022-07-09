@@ -63,9 +63,9 @@ namespace MinjustInvent.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _409_4094237_arrow_svg_free_transparent_background_back_icon {
+        internal static System.Drawing.Bitmap back {
             get {
-                object obj = ResourceManager.GetObject("_409_4094237_arrow_svg_free_transparent_background_back_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("back", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
