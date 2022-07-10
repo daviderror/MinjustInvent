@@ -25,61 +25,98 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-        <Grid Grid.Row="1" Loaded="Grid_Loaded">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton"
-            Width="120"
-            Height="30"
-            Margin="10"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Stretch"
-            Foreground="Black"
-            Background="LightGreen"
-            Click="Back"
-            Content="Назад"
-            FontFamily="MS Reference Sans Serif"
-            FontSize="18" >
-                <Button.Effect>
-                    <DropShadowEffect/>
-                </Button.Effect>
-            </Button>
-
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="backButton"
+                Width="50"
+                Height="30"
+                Margin="23,10,0,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                Background="LightGreen"
+                Foreground="Black"
+                Click="Back"
+                FontFamily="MS Reference Sans Serif"
+                ToolTip="Назад"
+                FontSize="18">
+                    <Image Source="Resources/back.png" />
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <Button x:Name="printButton"
+                Width="50"
+                Height="30"
+                Margin="50,10,0,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                Background="LightGreen"
+                Foreground="Black"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18"
+                Click="printButton_Click"
+                ToolTip="Экспорт в excel">
+                    <Image Source="Resources/excel.png" Width="25" />
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <Button x:Name="setFileNameButton"
+                Width="50"
+                Height="30"
+                Margin="20,10,0,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                Background="LightGreen"
+                Foreground="Black"
+                ToolTip="Путь для сохранения excel-файла"
+                FontFamily="MS Reference Sans Serif"
+                FontSize="18"
+                Click="setFileNameButton_Click">
+                    <Image Source="Resources/folder.png"></Image>
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+                <TextBlock Margin="15,18" FontFamily="MS Reference Sans Serif"
+                FontSize="13" x:Name="filePathText"></TextBlock>
+            </StackPanel>
             <Button x:Name="updateButton"
             Grid.Column="2"
-            Width="130"
+            Width="50"
             Height="30"
-            Margin="10 , 0, 50 ,0"
-            HorizontalAlignment="Center"
+            Margin="9,10,100,10"
+            HorizontalAlignment="Right"
             VerticalAlignment="Center"
-             Foreground="Black"
-             Background="LightGreen"
+            Background="LightGreen"
+            Foreground="Black"
+            ToolTip="Сохранить изменения"
             Click="updateButton_Click"
-            Content="Сохранить"
             FontFamily="MS Reference Sans Serif"
-            FontSize="18" Grid.ColumnSpan="2" >
+            FontSize="18">
+                <Image Source="Resources/save.png"></Image>
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
             </Button>
-
-            <Button x:Name="deleteButton"
-            Grid.Column="3"
-            Width="120"
+            <Button x:Name="deleteData"
+            Grid.Column="2"
+            Width="50"
             Height="30"
-            Margin="10"
+            Margin="0,10,10,10"
+            ToolTip="Удалить"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
-             Foreground="Black"
-             Background="LightGreen"
+            Background="LightGreen"
+            Foreground="Black"
             Click="deleteButton_Click"
-            Content="Удалить"
             FontFamily="MS Reference Sans Serif"
             FontSize="18" >
+                <Image Source="Resources/musor.png"></Image>
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>

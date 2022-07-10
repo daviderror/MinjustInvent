@@ -105,5 +105,15 @@ namespace MinjustInvent
         {
 
         }
+
+        private void setFileNameButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void printButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

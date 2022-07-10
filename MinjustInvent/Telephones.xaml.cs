@@ -139,5 +139,15 @@ namespace MinjustInvent
                     Position = d.Position,
                 });
         }
+
+        private void printButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void setFileNameButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

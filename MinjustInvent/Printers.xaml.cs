@@ -94,5 +94,15 @@ namespace MinjustInvent
                     Name = d.Name
                 });
         }
+
+        private void setFileNameButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void printButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
