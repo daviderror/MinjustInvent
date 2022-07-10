@@ -112,6 +112,7 @@
     <Compile Include="Departments.xaml.cs">
       <DependentUpon>Departments.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Excel\CardsExcelManager.cs" />
     <Compile Include="Excel\ARMExcelManager.cs" />
     <Compile Include="Excel\Base\ExcelManager.cs" />
     <Compile Include="Excel\Base\IExcelManager.cs" />

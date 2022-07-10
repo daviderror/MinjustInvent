@@ -143,7 +143,7 @@ namespace MinjustInvent
         }
         void ExcelWork(object sender, DoWorkEventArgs e)
         {
-            var excel = new ARMExcelManager();
+            var excel = new CardsExcelManager();
 
             e.Result = excel.SaveExcel(dataSource).Result;
         }
@@ -153,7 +153,12 @@ namespace MinjustInvent
             if (e.Result as bool? == true)
                 MessageBox.Show("Файл excel сохранен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             else
-                MessageBox.Show("Не удалось соханить excel-файл", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Не удалось сохранить excel-файл", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            excelSaver.DoWork -= ExcelWork;
+            excelSaver.RunWorkerCompleted -= ExcelWorkCompleted;
         }
         private void setFileNameButton_Click(object sender, RoutedEventArgs e)
         {
@@ -165,7 +170,7 @@ namespace MinjustInvent
                 filePathText.Text = openFileDlg.SelectedPath;
             }
         }
-
+        
         private void printButton_Click(object sender, RoutedEventArgs e)
         {
             excelSaver.RunWorkerAsync();
