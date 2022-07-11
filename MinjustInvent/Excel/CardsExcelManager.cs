@@ -1,4 +1,5 @@
-﻿using OfficeOpenXml;
+﻿using MinjustInvent.Model;
+using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System;
 using System.Collections;
@@ -23,7 +24,7 @@ namespace MinjustInvent.Excel
         {
             try
             {
-                var currentTypeData = data as List<KartochkiOrder>;
+                var currentTypeData = data as List<CardModel>;
                 if (currentTypeData == null)
                     throw new Exception("Не подходящий тип для создания excel файла");
 
