@@ -1,10 +1,8 @@
 ﻿using MinjustInvent.Model;
 using OfficeOpenXml;
-using OfficeOpenXml.Style;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,10 +32,9 @@ namespace MinjustInvent.Excel
                 //убираем Id т.к. в экселе не нужен
                 var excelTypeData = currentTypeData.Select(_ => new
                 {
-                    _.Name,
+                    _.Name,   
+                    _.DepartmentName,
                     _.Card,
-                    _.DepartmentId,
-                    _.DepartmentIndex,
                     _.IssuedSignature,
                     _.ReceivedSignature
                 }).ToList();
@@ -58,8 +55,8 @@ namespace MinjustInvent.Excel
                     ws.Cells["E1"].Value = "Подпись(кто выдавал)";
 
                     //стили для экселя
-                    ws.Column(1).Width = 6;
-                    ws.Column(2).Width = 35;
+                    ws.Column(1).Width = 30;
+                    ws.Column(2).Width = 70;
                     ws.Column(3).Width = 20;
                     ws.Column(4).Width = 20;
                     ws.Column(5).Width = 25;

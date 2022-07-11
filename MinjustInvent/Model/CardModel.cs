@@ -9,6 +9,7 @@ namespace MinjustInvent.Model
         public string Card { get; set; }
         public string ReceivedSignature { get; set; }
         public string DepartmentIndex { get; set; }
+        public string DepartmentName { get; set; }
         public string IssuedSignature { get; set; }
         public Nullable<System.Guid> DepartmentId { get; set; }
         public bool DBEquals(CardModel comp)

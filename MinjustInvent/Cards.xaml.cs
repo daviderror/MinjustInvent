@@ -125,7 +125,8 @@ namespace MinjustInvent
                     Card = _.Card,
                     IssuedSignature = _.IssuedSignature,
                     Name = _.Name,
-                    ReceivedSignature = _.ReceivedSignature
+                    ReceivedSignature = _.ReceivedSignature,
+                    DepartmentName = _.Department.Name
                 }).ToList();
             beforeOrders = new List<CardModel>();
 
@@ -138,7 +139,8 @@ namespace MinjustInvent
                     DepartmentId = d.DepartmentId,
                     DepartmentIndex = d.DepartmentIndex,
                     IssuedSignature = d.IssuedSignature,
-                    ReceivedSignature = d.ReceivedSignature
+                    ReceivedSignature = d.ReceivedSignature,
+                    DepartmentName = d.DepartmentName
                 });
         }
         void ExcelWork(object sender, DoWorkEventArgs e)
