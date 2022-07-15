@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.ComponentModel;
 
 namespace MinjustInvent
 {
@@ -16,11 +17,17 @@ namespace MinjustInvent
         private List<TelephonyModel> dataSource;
         private List<TelephonyModel> beforeOrders;
         private List<Department> allDeps;
+
+        BackgroundWorker excelSaver = new BackgroundWorker();
         public Telephones()
         {
             InitializeComponent();
             using (minjustDBEntities minjustDb = new minjustDBEntities())
                 allDeps = minjustDb.Department.ToList();
+
+            filePathText.Text = ExcelManager.FilePath;
+            excelSaver.DoWork += ExcelWork;
+            excelSaver.RunWorkerCompleted += ExcelWorkCompleted;
         }
         private void Back(object sender, RoutedEventArgs e)
         {
@@ -141,15 +148,40 @@ namespace MinjustInvent
                     Position = d.Position,
                 });
         }
+        void ExcelWork(object sender, DoWorkEventArgs e)
+        {
+            var excel = new TelephonyExcelManager();
+
+            e.Result = excel.SaveExcel(dataSource).Result;
+        }
+
+        void ExcelWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result as bool? == true)
+                MessageBox.Show("Файл excel сохранен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("Не удалось сохранить excel-файл", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            excelSaver.DoWork -= ExcelWork;
+            excelSaver.RunWorkerCompleted -= ExcelWorkCompleted;
+        }
 
         private void printButton_Click(object sender, RoutedEventArgs e)
         {
-
+            excelSaver.RunWorkerAsync();
         }
 
         private void setFileNameButton_Click(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
+            var result = openFileDlg.ShowDialog();
+            if (result.ToString() != string.Empty)
+            {
+                ExcelManager.FilePath = openFileDlg.SelectedPath;
+                filePathText.Text = openFileDlg.SelectedPath;
+            }
         }
     }
 }

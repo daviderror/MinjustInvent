@@ -56,7 +56,7 @@ namespace MinjustInvent.Excel
                     ws.Cells["E1"].Value = "IP";
 
                     //стили для экселя
-                    ws.Column(1).Width = 15;
+                    ws.Column(1).Width = 14;
                     ws.Column(2).Width = 35;
                     ws.Column(3).Width = 20;
                     ws.Column(4).Width = 30;
