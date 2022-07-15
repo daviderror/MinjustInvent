@@ -18,7 +18,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="printersGrid" Loaded="phonesGrid_Loaded">
+        <DataGrid AutoGenerateColumns="False" x:Name="printersGrid" Loaded="printersGrid_Loaded">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding CabinetNum}" Header="Номер кабинета" Width="120"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Модель принтера" Width="120"/>

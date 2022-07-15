@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using MinjustInvent.Excel;
+using MinjustInvent.Model;
 
 namespace MinjustInvent
 {
@@ -12,9 +15,16 @@ namespace MinjustInvent
     {
         private List<PrinterOrder> dataSource;
         private List<PrinterOrder> beforeOrders;
+
+        BackgroundWorker excelSaver = new BackgroundWorker();
+
         public Printers()
         {
             InitializeComponent();
+            filePathText.Text = ExcelManager.FilePath;
+
+            excelSaver.DoWork += ExcelWork;
+            excelSaver.RunWorkerCompleted += ExcelWorkCompleted;
         }
 
         private void Back(object sender, RoutedEventArgs e)
@@ -59,7 +69,7 @@ namespace MinjustInvent
                             minjustDb.PrinterOrder.AddRange(itemsForAdd);
                         }
                         minjustDb.SaveChanges();
-                        phonesGrid_Loaded(null, null);
+                        printersGrid_Loaded(null, null);
                     }
             }
             catch (Exception ex)
@@ -77,7 +87,7 @@ namespace MinjustInvent
             printersGrid.ItemsSource = dataSource;
         }
 
-        private void phonesGrid_Loaded(object sender, RoutedEventArgs e)
+        private void printersGrid_Loaded(object sender, RoutedEventArgs e)
         {
             using (minjustDBEntities minjustDb = new minjustDBEntities())
                 printersGrid.ItemsSource = dataSource = minjustDb.PrinterOrder.OrderBy(_ => _.CabinetNum).ToList();
@@ -94,15 +104,40 @@ namespace MinjustInvent
                     Name = d.Name
                 });
         }
+        void ExcelWork(object sender, DoWorkEventArgs e)
+        {
+            var excel = new PrintersExcelManager();
+
+            e.Result = excel.SaveExcel(dataSource).Result;
+        }
+
+        void ExcelWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result as bool? == true)
+                MessageBox.Show("Файл excel сохранен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("Не удалось сохранить excel-файл", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            excelSaver.DoWork -= ExcelWork;
+            excelSaver.RunWorkerCompleted -= ExcelWorkCompleted;
+        }
 
         private void setFileNameButton_Click(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
+            var result = openFileDlg.ShowDialog();
+            if (result.ToString() != string.Empty)
+            {
+                ExcelManager.FilePath = openFileDlg.SelectedPath;
+                filePathText.Text = openFileDlg.SelectedPath;
+            }
         }
 
         private void printButton_Click(object sender, RoutedEventArgs e)
         {
-
+            excelSaver.RunWorkerAsync();
         }
     }
 }
