@@ -17,6 +17,7 @@ namespace MinjustInvent
         private List<CardModel> dataSource;
         private List<CardModel> beforeOrders;
         private List<Department> allDeps;
+
         BackgroundWorker excelSaver = new BackgroundWorker();
         public Cards()
         {
@@ -35,7 +36,6 @@ namespace MinjustInvent
             mainWindow.Show();
             this.Close();
         }
-
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -102,7 +102,6 @@ namespace MinjustInvent
                 MessageBox.Show(ex.Message, "При выполнении произошла ошибка", MessageBoxButton.OK);
             }
         }
-
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (cardsGrid.SelectedIndex < dataSource.Count)
@@ -112,7 +111,6 @@ namespace MinjustInvent
                 cardsGrid.ItemsSource = dataSource;
             }
         }
-
         private void cardsGrid_Loaded(object sender, RoutedEventArgs e)
         {
             using (minjustDBEntities minjustDb = new minjustDBEntities())

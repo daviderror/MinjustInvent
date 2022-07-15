@@ -116,6 +116,7 @@
     <Compile Include="Excel\ARMExcelManager.cs" />
     <Compile Include="Excel\Base\ExcelManager.cs" />
     <Compile Include="Excel\Base\IExcelManager.cs" />
+    <Compile Include="Excel\USBExcelManager.cs" />
     <Compile Include="KartochkiOrder.cs">
       <DependentUpon>minjust.tt</DependentUpon>
     </Compile>

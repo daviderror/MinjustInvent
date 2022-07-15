@@ -1,16 +1,12 @@
-﻿using System;
+﻿using MinjustInvent.Excel;
+using MinjustInvent.Model;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace MinjustInvent
 {
@@ -23,9 +19,15 @@ namespace MinjustInvent
         private List<USBOrder> dataSource;
         private List<USBOrder> beforeOrders;
 
+        BackgroundWorker excelSaver = new BackgroundWorker();
+
         public Usb()
         {
             InitializeComponent();
+            filePathText.Text = ExcelManager.FilePath;
+
+            excelSaver.DoWork += ExcelWork;
+            excelSaver.RunWorkerCompleted += ExcelWorkCompleted;
         }
         private void Back(object sender, RoutedEventArgs e)
         {
@@ -67,7 +69,7 @@ namespace MinjustInvent
                             minjustDb.USBOrder.AddRange(itemsForAdd);
                         }
                         minjustDb.SaveChanges();
-                        phonesGrid_Loaded(null, null);
+                        UsbGrid_Loaded(null, null);
                     }
             }
             catch (Exception ex)
@@ -85,7 +87,7 @@ namespace MinjustInvent
             usbsGrid.ItemsSource = dataSource;
         }
 
-        private void phonesGrid_Loaded(object sender, RoutedEventArgs e)
+        private void UsbGrid_Loaded(object sender, RoutedEventArgs e)
         {
             using (minjustDBEntities minjustDb = new minjustDBEntities())
                 usbsGrid.ItemsSource = dataSource = minjustDb.USBOrder.OrderBy(_ => _.Name).ToList();
@@ -100,20 +102,39 @@ namespace MinjustInvent
                     Size = d.Size
                 });
         }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        void ExcelWork(object sender, DoWorkEventArgs e)
         {
+            var excel = new UsbExcelManager();
 
+            e.Result = excel.SaveExcel(dataSource).Result;
         }
 
+        void ExcelWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result as bool? == true)
+                MessageBox.Show("Файл excel сохранен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("Не удалось сохранить excel-файл", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            excelSaver.DoWork -= ExcelWork;
+            excelSaver.RunWorkerCompleted -= ExcelWorkCompleted;
+        }
         private void setFileNameButton_Click(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
+            var result = openFileDlg.ShowDialog();
+            if (result.ToString() != string.Empty)
+            {
+                ExcelManager.FilePath = openFileDlg.SelectedPath;
+                filePathText.Text = openFileDlg.SelectedPath;
+            }
         }
 
         private void printButton_Click(object sender, RoutedEventArgs e)
         {
-
+            excelSaver.RunWorkerAsync();
         }
     }
 }

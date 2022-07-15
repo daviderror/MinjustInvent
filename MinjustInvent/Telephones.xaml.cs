@@ -1,17 +1,10 @@
 ﻿using MinjustInvent.Model;
+using MinjustInvent.Excel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MinjustInvent
 {
@@ -56,7 +49,7 @@ namespace MinjustInvent
                             var itemsForUpdateFromDb = minjustDb.TelephonyOrder.Where(_ => itemsForUpdateIds.Contains(_.Id)).ToList();
                             foreach (var item in itemsForUpdateFromDb)
                             {
-                                
+
                                 var s = itemsForUpdate.First(_ => _.Id == item.Id);
                                 var error = allDeps.FirstOrDefault(x => x.IndexNum == s.DepartmentIndex);
                                 if (error == null && !string.IsNullOrEmpty(s.DepartmentIndex))
@@ -74,7 +67,7 @@ namespace MinjustInvent
                         var itemsForAdd = dataSource.Where(_ => _.Id == Guid.Empty).ToList();
                         if (itemsForAdd.Count > 0)
                         {
-                            foreach(var added in itemsForAdd)
+                            foreach (var added in itemsForAdd)
                             {
                                 var error = allDeps.FirstOrDefault(x => x.IndexNum == added.DepartmentIndex);
                                 if (error == null && !string.IsNullOrEmpty(added.DepartmentIndex))
@@ -119,10 +112,19 @@ namespace MinjustInvent
         private void phonesGrid_Loaded(object sender, RoutedEventArgs e)
         {
             using (minjustDBEntities minjustDb = new minjustDBEntities())
-                phonesGrid.ItemsSource = dataSource = minjustDb.TelephonyOrder.OrderBy(_ => _.Num).Select(_ => 
-                new TelephonyModel { Id = _.Id, CabinetNum = _.CabinetNum, CityPhone = _.CityPhone, DepartmentId = _.DepartmentId,
-                                     DepartmentIndex = _.Department.IndexNum, InternalPhone = _.InternalPhone, Name = _.Name,
-                                     Num = _.Num, Position = _.Position}).ToList();
+                phonesGrid.ItemsSource = dataSource = minjustDb.TelephonyOrder.OrderBy(_ => _.Num).Select(_ =>
+                new TelephonyModel
+                {
+                    Id = _.Id,
+                    CabinetNum = _.CabinetNum,
+                    CityPhone = _.CityPhone,
+                    DepartmentId = _.DepartmentId,
+                    DepartmentIndex = _.Department.IndexNum,
+                    InternalPhone = _.InternalPhone,
+                    Name = _.Name,
+                    Num = _.Num,
+                    Position = _.Position
+                }).ToList();
             beforeOrders = new List<TelephonyModel>();
 
             foreach (var d in dataSource)

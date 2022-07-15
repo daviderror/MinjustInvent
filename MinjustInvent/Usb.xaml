@@ -13,7 +13,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="usbsGrid" Loaded="phonesGrid_Loaded">
+        <DataGrid AutoGenerateColumns="False" x:Name="usbsGrid" Loaded="UsbGrid_Loaded">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="ФИО сотрудника" Width="300"/>
                 <DataGridTextColumn Binding="{Binding SerialNumber}" Header="Серийный номер" Width="180"/>
