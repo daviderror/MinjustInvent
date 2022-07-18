@@ -130,7 +130,8 @@ namespace MinjustInvent
                     InternalPhone = _.InternalPhone,
                     Name = _.Name,
                     Num = _.Num,
-                    Position = _.Position
+                    Position = _.Position,
+                    DepartmentName = _.Department.Name
                 }).ToList();
             beforeOrders = new List<TelephonyModel>();
 
@@ -146,6 +147,7 @@ namespace MinjustInvent
                     DepartmentId = d.DepartmentId,
                     Num = d.Num,
                     Position = d.Position,
+                    DepartmentName = d.DepartmentName
                 });
         }
         void ExcelWork(object sender, DoWorkEventArgs e)

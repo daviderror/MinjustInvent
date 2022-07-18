@@ -13,6 +13,7 @@ namespace MinjustInvent.Model
         public string InternalPhone { get; set; }
         public Nullable<System.Guid> DepartmentId { get; set; }
         public string DepartmentIndex { get; set; }
+        public string DepartmentName { get; set; }
         public bool DBEquals(TelephonyModel comp)
         {
             if (comp == null)
