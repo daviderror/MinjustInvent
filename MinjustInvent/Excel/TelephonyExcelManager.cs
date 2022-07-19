@@ -32,7 +32,7 @@ namespace MinjustInvent.Excel
                 //убираем Id т.к. в экселе не нужен
                 var excelTypeData = currentTypeData.Select(_ => new
                 {
-                    Department = $"{_.DepartmentName} (индекс отдела{_.DepartmentIndex})",
+                    Department = $"{_.DepartmentName} (индекс отдела {_.DepartmentIndex})",
                     _.Position,
                     _.Name,
                     _.CityPhone,

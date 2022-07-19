@@ -51,8 +51,8 @@ namespace MinjustInvent.Excel
                     ws.Cells["A1"].Value = "ФИО";
                     ws.Cells["B1"].Value = "Отдел";
                     ws.Cells["C1"].Value = "Номер карты";
-                    ws.Cells["D1"].Value = "Подпись(кто получил)";
-                    ws.Cells["E1"].Value = "Подпись(кто выдавал)";
+                    ws.Cells["D1"].Value = "Подпись (кто получил)";
+                    ws.Cells["E1"].Value = "Подпись (кто выдавал)";
 
                     //стили для экселя
                     ws.Column(1).Width = 30;
